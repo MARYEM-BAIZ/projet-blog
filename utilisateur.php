@@ -38,9 +38,7 @@ session_start();
           <a class="dropdown-item" href="accueil.php">Déconnexion</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="accueil.php">Q/A</a>
-      </li>
+     
     </ul>
     
   </div>
