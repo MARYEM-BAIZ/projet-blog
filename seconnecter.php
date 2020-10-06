@@ -11,37 +11,62 @@ session_start();
            $password="";
            $email="";
            if (isset($_POST['seconnecter']) ) {
+             $password=strip_tags($_POST['password']);
                $password=htmlspecialchars($_POST['password']);
-               $password=strip_tags($_POST['password']);
+              
 
-               $email=htmlspecialchars($_POST['email']);
                $email=strip_tags($_POST['email']);
+               $email=htmlspecialchars($_POST['email']);
+  
 
-               $verif=$base2blog->prepare('select password_utilisateur,email_utilisateur from utilisateur');
-               $verif1=$verif->execute(array());
-                var_dump($verif1);
-                echo " <br>";
+               $verif=$base2blog->prepare('select * from utilisateur where email_utilisateur= ? and password_utilisateur = ? ');
+               $verif->execute(array($email, $password));
+            //    var_dump($verif->rowCount()) ; 
+               $ligne = $verif->fetch(); 
+               echo "<pre>";
+                var_dump($ligne);
+                echo "</pre>";
+             if(isset($ligne['email_utilisateur']))
+             {
+                   if($ligne['id_role']== 1) {
+                       $_SESSION['idutilisateur'] = $ligne['id_utilisateur']; 
+                       $_SESSION['immageutilisateur'] = $ligne['avatar_utilisateur']; 
+                       $_SESSION['roleutilisateur'] = $ligne['id_role']; 
 
-                while ($ver=$verif->fetch()) {
-                    if ( $ver['password_utilisateur'] == $password and  $ver['email_utilisateur'] ==  $email ) {
-                        header('Location:utilisateur.php'); 
-                    }
-                  
-                }
+                    header('Location:utilisateur.php'); 
+                   }
+                   else {
+                    $_SESSION['idutilisateur'] = $ligne['id_utilisateur']; 
+                    $_SESSION['immageutilisateur'] = $ligne['avatar_utilisateur']; 
+                    $_SESSION['roleutilisateur'] = $ligne['id_role']; 
 
-                if (  $password = 1234 and   $email == "baiz.maryem@gmail.com"  ) {
                     header('Location:administrateur.php'); 
-                }
-                     
-                $utilisersessions=$base2blog->prepare('select * from utilisateur where password_utilisateur=? and email_utilisateur=?');
-               $util=$utilisersessions->execute(array($password,$email));
-                var_dump($util);
-                echo " <br>";
+                   }
+             }
+             else {
+                 echo "connexion echouée"; 
+             }
 
-                $utiliser=$utilisersessions->fetch();
-                 $_SESSION['idutilisateur']=$utiliser['id_utilisateur'];
-                 $_SESSION['immageutilisateur'] =$utiliser['avatar_utilisateur'] ;
-                 $_SESSION['roleutilisateur'] = $utiliser['id_role'] ;
+            //     while ($ver=$verif->fetch()) {
+            //         if ( $ver['password_utilisateur'] == $password and  $ver['email_utilisateur'] ==  $email and $ver['id_role'] ) {
+            //             header('Location:utilisateur.php'); 
+            //         }
+                  
+            //     }
+
+            //     if (  $password = 1234 and   $email == "baiz.maryem@gmail.com"  ) {
+            //         header('Location:administrateur.php'); 
+            //     }
+                     
+            //     $utilisersessions=$base2blog->prepare('select * from utilisateur where password_utilisateur=? and email_utilisateur=?');
+            //    $util=$utilisersessions->execute(array($password,$email));
+            //     var_dump($util);
+            //     echo " <br>";
+
+            //     $utiliser=$utilisersessions->fetch();
+            //      $_SESSION['idutilisateur']=$utiliser['id_utilisateur'];
+            //      $_SESSION['immageutilisateur'] =$utiliser['avatar_utilisateur'] ;
+            //      $_SESSION['roleutilisateur'] = $utiliser['id_role'] ;
 
            }
 

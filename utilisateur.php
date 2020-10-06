@@ -1,5 +1,9 @@
 <?php 
 session_start();
+
+echo $_SESSION['idutilisateur'] ;
+echo $_SESSION['immageutilisateur'] ;
+echo $_SESSION['roleutilisateur'] ;
   ?>
 <!DOCTYPE html>
 <html lang="en">
