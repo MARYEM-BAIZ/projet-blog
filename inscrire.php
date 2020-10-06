@@ -67,10 +67,10 @@ session_start();
         $yeahid=$getid['id_utilisateur'];
         $_SESSION['id_utilisateur']=$yeahid;
 
-    $role=$baseblog->prepare('select * from role');
-    $role1=$role->execute(array());
-     var_dump($role1);
-     echo "  <br> ";
+    // $role=$baseblog->prepare('select * from role');
+    // $role1=$role->execute(array());
+    //  var_dump($role1);
+    //  echo "  <br> ";
 
      
 ?>
@@ -116,14 +116,12 @@ session_start();
 <input type="file" id="defaultRegisterFormAvatar" name="file" class="form-control mb-4" >
 
 <select name="select" id="" class="form-control" >
-       <?php while ($ro=$role->fetch()){  ?>
-             <option value="<?php echo $ro['id_role'] ?>"> <?php echo $ro['type_role'] ?></option>
-        <?php  } ?>
-    </select>
+<option value="1">utilisateur</option>
+</select>
+
 
 <!-- Sign up button -->
 <input class="btn btn-info my-4 btn-block" name="inscrire" value="S'inscrire"  type="submit">
-
 
 
 </form>

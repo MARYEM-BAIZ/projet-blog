@@ -8,7 +8,7 @@
 
            $password="";
            $email="";
-           if (isset($_POST['seconnecter'])) {
+           if (isset($_POST['seconnecter']) and $_POST['select']== 1) {
                $password=htmlspecialchars($_POST['password']);
                $password=strip_tags($_POST['password']);
 
@@ -40,7 +40,37 @@
                 // }
                
            }
-              
+
+
+           $passwordadmin="";
+           $emailadmin="";
+           if (isset($_POST['seconnecter']) and $_POST['select']== 2) {
+            $passwordadmin=htmlspecialchars($_POST['password']);
+            $passwordadmin=strip_tags($_POST['password']);
+
+            $emailadmin=htmlspecialchars($_POST['email']);
+            $emailadmin=strip_tags($_POST['email']);
+
+                   
+            $verif444=$base2blog->prepare('select username_administrateur,password_administrateur,email_administrateur from administrateur  ');
+            $verif00=$verif444->execute(array());
+             var_dump($verif00);
+             echo " <br>";
+            
+             while ($ver555=$verif444->fetch()) {
+                if ( $ver555['password_administrateur'] == $passwordadmin and  $ver555['email_administrateur'] ==  $emailadmin ) {
+                    header('Location:administrateur.php'); 
+                }
+             }
+             
+            
+
+           }
+            
+             $role=$base2blog->prepare('select * from role');
+     $role1=$role->execute(array());
+     var_dump($role1);
+      echo "  <br> ";
 
 ?>
 
@@ -85,8 +115,17 @@
 <!-- Password -->
 <input type="password" id="defaultSubscriptionFormPassword" class="form-control mb-4" name="password" placeholder="Mot de passe">
 
+<select name="select" id="" class="form-control  mb-4" >
+       <?php while ($ro=$role->fetch()){  ?>
+             <option value="<?php echo $ro['id_role'] ?>"> <?php echo $ro['type_role'] ?></option>
+        <?php  } ?> 
+     </select> 
+
 <!-- Sign in button -->
 <button class="btn btn-info btn-block" name="seconnecter" type="submit">Se Connecter</button>
+
+ 
+
 
  
 </form>
