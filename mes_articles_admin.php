@@ -1,31 +1,25 @@
 <?php 
-session_start();
-              
-try {
-  $baseadminblog= new PDO ('mysql:host=localhost;dbname=blog;charset=utf8','root','');
-} catch (exception $e) {
-  echo " la connexion a échoué " ." <br>";
-}   
-
-// $immageadmin= "immages/immage_admin.jpg" ;
-
-// $nbr=1;
-// $inserer=$baseadminblog->prepare(' update administrateur set avatar_administrateur= ?  where id_administrateur=1 ');
-// $inserer1=$inserer->execute(array( ));
-// var_dump($inserer1);
-// echo "  <br> ";
-       
-
-
-
-// $id=$baseadminblog->prepare(' select * from utilisateur');
-// $id1=$id->execute(array());
-// var_dump($id1);
-// echo "  <br> ";
-// $getid=$id->fetch();
-
-//     $yeahid=$getid['id_utilisateur'];
-//     // $_SESSION['idutilisateur']=$yeahid;
+      session_start();
+      try {
+       $basemesarticlesblog= new PDO ('mysql:host=localhost;dbname=blog;charset=utf8','root','');
+   } catch (exception $e) {
+       echo " la connexion a échoué " ." <br>";
+   }   
+                                                   //  echo "je doit changer date_parution_articles "
+     $afficher1=$basemesarticlesblog->prepare('select * from articles where id_utilisateur=? and  id_categorie=1  ');
+     $afficher11=$afficher1->execute(array($_SESSION['idutilisateur']));
+     var_dump($afficher11);
+     echo " <br>";
+                                                 //  echo "je doit changer date_parution_articles "
+     $afficher2=$basemesarticlesblog->prepare('select * from articles where id_utilisateur=? and  id_categorie=2   ');
+     $afficher22=$afficher2->execute(array($_SESSION['idutilisateur']));
+     var_dump($afficher22);
+     echo " <br>";
+                           //  echo "je doit changer date_parution_articles "
+     $afficher3=$basemesarticlesblog->prepare('select * from articles where id_utilisateur=? and  id_categorie=3  ');
+     $afficher33=$afficher3->execute(array($_SESSION['idutilisateur']));
+     var_dump($afficher33);
+     echo " <br>";
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +30,7 @@ try {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   
-    <link rel="stylesheet" type="text/css" href="css/administrateur.css">
+    <link rel="stylesheet" type="text/css" href="css/mes_articles_admin.css">
 </head>
 <body>
 <header>
@@ -62,7 +56,7 @@ try {
           <a class="dropdown-item" href="#">Liste des utilisateurs</a>
           <a class="dropdown-item" href="">Ajouter un utilisateur</a>
           <a class="dropdown-item" href="">Messages (Contact Us)</a>
-          <a class="dropdown-item" href="mes_articles_admin.php">Liste des articles</a>
+          <a class="dropdown-item" href="mes_article.php">Liste des articles</a>
           <a class="dropdown-item" href="ajout_article.php">Ajouter un article</a>
           <a class="dropdown-item" href="deconnexion.php">Déconnexion</a>
         </div>
@@ -110,9 +104,68 @@ try {
     </header>
 
 <main>
-        <section>
-           
-        </section>
+<section class="section1">
+    <p class="h1">Bien Etre</p>
+
+     <div class="container">
+     <div class="row">
+     <?php  while ($afficher111=$afficher1->fetch()) { ?>
+         <div class="col-md-3 col-lg-3 col-sm-12">
+              <div  class="immageaffiche" >
+                  <img class="imgheight" src="<?php echo $afficher111['immage_article'] ?>" alt="immage">
+              </div>
+              <p> <?php echo $afficher111['date_creation_article'] ?> </p>
+              <p> <?php echo $afficher111['titre_article'] ?></p>
+              <p> <?php echo $afficher111['contenu_article'] ?></p>
+         </div>
+        <?php   } ?>
+     </div>
+     </div>
+
+    </section>
+    
+    <section class="section2">
+    <p class="h1">Cheuveux</p>
+
+    <div class="container">
+     <div class="row">
+     <?php  while ($afficher222=$afficher2->fetch()) { ?>
+         <div class="col-md-3 col-lg-3 col-sm-12">
+              <div  class="immageaffiche">
+                  <img class="imgheight" src="<?php echo $afficher222['immage_article'] ?>" alt="immage">
+              </div>
+              <p> <?php echo $afficher222['date_creation_article'] ?> </p>
+              <p> <?php echo $afficher222['titre_article'] ?></p>
+              <p> <?php echo $afficher222['contenu_article'] ?></p>
+         </div>
+        <?php   } ?>
+     </div>
+     </div>
+
+
+    </section>
+    
+
+    <section class="section3">
+    <p class="h1">Bien Maquillage</p>
+
+    <div class="container">
+     <div class="row">
+     <?php  while ($afficher333=$afficher3->fetch()) { ?>
+         <div class="col-md-3 col-lg-3 col-sm-12">
+              <div  class="immageaffiche">
+                  <img class="imgheight" src="<?php echo $afficher333['immage_article'] ?>" alt="immage">
+              </div>
+              <p> <?php echo $afficher333['date_creation_article'] ?> </p>
+              <p> <?php echo $afficher333['titre_article'] ?></p>
+              <p> <?php echo $afficher333['contenu_article'] ?></p>
+         </div>
+        <?php   } ?>
+     </div>
+     </div>
+
+
+    </section>
     </main>
 <footer>
     <article class="article1">

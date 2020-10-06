@@ -43,13 +43,19 @@ session_start();
                   
                   $datecrea=date("d/m/y") ;
                    $inserer=$base1blog->prepare(' insert into articles(titre_article,contenu_article,immage_article,id_categorie,id_utilisateur,date_creation_article) values(?,?,?,?,?,?)');
-                   $inserer1=$inserer->execute(array($_POST['titrearticle'],$_POST['contenuarticle'],$chemain ,$_POST['select'],$_SESSION['id_utilisateur'] ,$datecrea));
+                   $inserer1=$inserer->execute(array($_POST['titrearticle'],$_POST['contenuarticle'],$chemain ,$_POST['select'],$_SESSION['idutilisateur'] ,$datecrea));
                    var_dump($inserer1);
                    echo "  <br> ";
                    
                      
               }
-              header('Location:mes_articles.php');
+              if ( $_SESSION['roleutilisateur'] == 1) {
+                header('Location:mes_articles.php');
+              }
+              elseif ( $_SESSION['roleutilisateur'] == 2) {
+                header('Location:mes_articles_admin.php');
+              }
+              
           }
 
        }
@@ -72,70 +78,7 @@ session_start();
 </head>
 <body>
   
-  <header>
-    <p class="h5">Lorem, ipsum dolor.</p>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-     
-      <li class="nav-item">
-        <a class="nav-link ml-3 mr-5" href="accueil.php">Accueil</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link mr-5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Espace Utilisateur 
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Mes articles</a>
-          <a class="dropdown-item" href="ajout_article.php">Ajouter un article</a>
-          <a class="dropdown-item" href="accueil.php">Déconnexion</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="accueil.php">Q/A</a>
-      </li>
-    </ul>
-    
-  </div>
- <ul class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item avatar">
-        <a class="nav-link p-0" href="#">
-          <img src="   <?php echo  $_SESSION['file'] ?>" alt="immage" class="rounded-circle mr-3 z-depth-0"
-            alt="avatar image" height="35">
-        </a>
-      </li>
-    </ul> 
-</nav>
-    
-      <!-- <nav class=" navbar navbar-expand-md navbar-dark bg-dark"> 
-          <a href="#" class="navbar-brand"> bootstrap</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"> </span>
-
-           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               <ul class="navbar-nav ml-auto">
-                   <li class="nav-item active">
-                       <a class="nav-link" href="#">Homme</a>
-                   </li>
-               </ul>
-           </div>
-          </button>
-      </nav> -->
-    <!-- <ul class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item avatar">
-        <a class="nav-link p-0" href="#">
-          <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" alt="immage" class="rounded-circle z-depth-0"
-            alt="avatar image" height="35">
-        </a>
-      </li>
-    </ul> -->
-  </header>
+ 
   <main>
   <section>
    <form class="text-center  p-5" action="#!" method="post"  enctype="multipart/form-data">

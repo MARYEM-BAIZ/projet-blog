@@ -7,17 +7,17 @@
     }   
                                                     //  echo "je doit changer date_parution_articles "
       $afficher1=$basemesarticlesblog->prepare('select * from articles where id_utilisateur=? and  id_categorie=1  ');
-      $afficher11=$afficher1->execute(array($_SESSION['id_utilisateur']));
+      $afficher11=$afficher1->execute(array($_SESSION['idutilisateur']));
       var_dump($afficher11);
       echo " <br>";
                                                   //  echo "je doit changer date_parution_articles "
       $afficher2=$basemesarticlesblog->prepare('select * from articles where id_utilisateur=? and  id_categorie=2   ');
-      $afficher22=$afficher2->execute(array($_SESSION['id_utilisateur']));
+      $afficher22=$afficher2->execute(array($_SESSION['idutilisateur']));
       var_dump($afficher22);
       echo " <br>";
                             //  echo "je doit changer date_parution_articles "
       $afficher3=$basemesarticlesblog->prepare('select * from articles where id_utilisateur=? and  id_categorie=3  ');
-      $afficher33=$afficher3->execute(array($_SESSION['id_utilisateur']));
+      $afficher33=$afficher3->execute(array($_SESSION['idutilisateur']));
       var_dump($afficher33);
       echo " <br>";
  ?>
@@ -67,7 +67,7 @@
  <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item avatar">
         <a class="nav-link p-0" href="#">
-          <img src="   <?php echo  $_SESSION['file'] ?>" alt="immage" class="rounded-circle mr-3 z-depth-0"
+          <img src="   <?php echo  $_SESSION['immageutilisateur'] ?>" alt="immage" class="rounded-circle mr-3 z-depth-0"
             alt="avatar image" height="35">
         </a>
       </li>
@@ -131,7 +131,7 @@
               </div>
               <p> <?php echo $afficher222['date_creation_article'] ?> </p>
               <p> <?php echo $afficher222['titre_article'] ?></p>
-              <p> <?php echo $afficher222['contenu_article_article'] ?></p>
+              <p> <?php echo $afficher222['contenu_article'] ?></p>
          </div>
         <?php   } ?>
      </div>
@@ -142,7 +142,7 @@
     
 
     <section class="section3">
-    <p class="h1">Bien Maquillage</p>
+    <p class="h1"> Maquillage</p>
 
     <div class="container">
      <div class="row">
@@ -153,7 +153,7 @@
               </div>
               <p> <?php echo $afficher333['date_creation_article'] ?> </p>
               <p> <?php echo $afficher333['titre_article'] ?></p>
-              <p> <?php echo $afficher333['contenu_article_article'] ?></p>
+              <p> <?php echo $afficher333['contenu_article'] ?></p>
          </div>
         <?php   } ?>
      </div>

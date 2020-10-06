@@ -33,7 +33,7 @@ session_start();
           Espace Utilisateur 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Mes articles</a>
+          <a class="dropdown-item" href="mes_articles.php">Mes articles</a>
           <a class="dropdown-item" href="ajout_article.php">Ajouter un article</a>
           <a class="dropdown-item" href="deconnexion.php">Déconnexion</a>
         </div>

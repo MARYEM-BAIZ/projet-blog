@@ -7,17 +7,17 @@
          echo " la connexion a échoué " ." <br>";
      }   
 
-        $username="";
+       
+        if(isset($_POST['inscrire'])){
+             $username="";
         $email="";
         $password="";
-        if (isset($_POST['inscrire'])) {
             $username=htmlspecialchars($_POST['username']);
             $username=strip_tags($_POST['username']);
 
             $email=htmlspecialchars($_POST['email']);
             $email=strip_tags($_POST['email']);
 
-            
             $password=htmlspecialchars($_POST['password']);
             $password=strip_tags($_POST['password']);
 
@@ -50,7 +50,7 @@
                             $chemain= "immages/" .$details['basename'];
                             // $_SESSION['immageutilisateur'] = $chemain;
                 $inserer=$baseblog->prepare(' insert into utilisateur(username_utilisateur,email_utilisateur,password_utilisateur,avatar_utilisateur,id_role) values(?,?,?,?,?) ');
-                $inserer1=$inserer->execute(array($_POST['username'],$_POST['email'],$_POST['password'],$chemain,$_POST['select']));
+                $inserer1=$inserer->execute(array($_POST['username'],$_POST['email'],$_POST['password'],$chemain,1));
                 var_dump($inserer1);
                 echo "  <br> ";
               }
@@ -116,9 +116,6 @@
  
 <input type="file" id="defaultRegisterFormAvatar" name="file" class="form-control mb-4" >
 
-<select name="select" id="" class="form-control" >
-<option value="1">utilisateur</option>
-</select>
 
 
 <!-- Sign up button -->
