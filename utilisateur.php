@@ -35,7 +35,7 @@ session_start();
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Mes articles</a>
           <a class="dropdown-item" href="ajout_article.php">Ajouter un article</a>
-          <a class="dropdown-item" href="accueil.php">Déconnexion</a>
+          <a class="dropdown-item" href="deconnexion.php">Déconnexion</a>
         </div>
       </li>
      
@@ -45,7 +45,7 @@ session_start();
  <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item avatar">
         <a class="nav-link p-0" href="#">
-          <img src="   <?php echo  $_SESSION['file'] ?>" alt="immage" class="rounded-circle mr-3 z-depth-0"
+          <img src="   <?php echo     $_SESSION['immageutilisateur'] ?>" alt="immage" class="rounded-circle mr-3 z-depth-0"
             alt="avatar image" height="35">
         </a>
       </li>

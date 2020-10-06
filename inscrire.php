@@ -1,5 +1,6 @@
 <?php
-session_start();
+// session_start();
+    //  echo "dans ce fichier il ya 2 sessions $_SESSION['immageutilisateur'] = $chemain; et $_SESSION['idutilisateur']=$yeahid; "
      try {
          $baseblog= new PDO ('mysql:host=localhost;dbname=blog;charset=utf8','root','');
      } catch (exception $e) {
@@ -47,7 +48,7 @@ session_start();
                         move_uploaded_file($_FILES['file']['tmp_name'] , "immages/" .$details['basename']);
                     }
                             $chemain= "immages/" .$details['basename'];
-                            $_SESSION['file'] = $chemain;
+                            // $_SESSION['immageutilisateur'] = $chemain;
                 $inserer=$baseblog->prepare(' insert into utilisateur(username_utilisateur,email_utilisateur,password_utilisateur,avatar_utilisateur,id_role) values(?,?,?,?,?) ');
                 $inserer1=$inserer->execute(array($_POST['username'],$_POST['email'],$_POST['password'],$chemain,$_POST['select']));
                 var_dump($inserer1);
@@ -65,7 +66,7 @@ session_start();
     $getid=$id->fetch();
 
         $yeahid=$getid['id_utilisateur'];
-        $_SESSION['id_utilisateur']=$yeahid;
+        // $_SESSION['idutilisateur']=$yeahid;
 
     // $role=$baseblog->prepare('select * from role');
     // $role1=$role->execute(array());

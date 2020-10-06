@@ -1,4 +1,6 @@
 <?php 
+session_start();
+   //  echo "dans ce fichier il ya 2 sessions $_SESSION['immageutilisateur'] = $utiliser['avatar_utilisateur']; et $_SESSION['idutilisateur']=$utiliser['id_utilisateur']; "
            try {
                $base2blog= new PDO ('mysql:host=localhost;dbname=blog;charset=utf8',"root",'');
            } catch (excepion $e) {
@@ -17,7 +19,6 @@
 
                $verif=$base2blog->prepare('select password_utilisateur,email_utilisateur from utilisateur');
                $verif1=$verif->execute(array());
-
                 var_dump($verif1);
                 echo " <br>";
 
@@ -27,18 +28,16 @@
                     }
                   
                 }
-                // else {
-                //     echo " le mot de passe ou l'email n'existe pas " . "<br>";
-                // }
+                     
+                $utilisersessions=$base2blog->prepare('select * from utilisateur where password_utilisateur=? and email_utilisateur=?');
+               $util=$utilisersessions->execute(array($password,$email));
+                var_dump($util);
+                echo " <br>";
 
-                // while ($ver=$verif->fetch()) {
-                //     if ( $ver['password_utilisateur'] ==! $password and  $ver['email_utilisateur'] ==!  $email ) {
-                //         header('Location:revenirpageaccueil.php');
-                //     }
-                    
-                  
-                // }
-               
+                $utiliser=$utilisersessions->fetch();
+                 $_SESSION['idutilisateur']=$utiliser['id_utilisateur'];
+                 $_SESSION['immageutilisateur'] =$utiliser['avatar_utilisateur'] ;
+
            }
 
 
