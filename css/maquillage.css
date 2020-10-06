@@ -3,6 +3,17 @@
     margin: 0;
     padding: 0;
 }
+body {
+    background-color: rgb(239, 237, 238);
+}
+
+ main {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    
+   
+}
 .imgheight {
     height: 150px;
     width: 100%;

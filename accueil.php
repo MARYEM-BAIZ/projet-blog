@@ -33,8 +33,8 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="bien_etre.php">Bien etre </a>
-                        <a class="dropdown-item" href="cheuveux">Cheveux</a>
-                        <a class="dropdown-item" href="maquillage">Maquillage</a>
+                        <a class="dropdown-item" href="cheuveux.php">Cheveux</a>
+                        <a class="dropdown-item" href="maquillage.php">Maquillage</a>
                         </div>
                     </li>
                     <li class="nav-item">

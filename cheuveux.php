@@ -9,8 +9,8 @@
     }   
 
       //  echo "je doit changer date_parution_articles "
-         $afficher3=$bascheuveuxblog->prepare('select * from articles where   id_categorie=2  ');
-         $afficher33=$afficher3->execute());
+         $afficher3=$basecheuveuxblog->prepare('select * from articles where   id_categorie=2  ');
+         $afficher33=$afficher3->execute();
           var_dump($afficher33);
           echo " <br>";
          ?>
@@ -28,14 +28,14 @@
 <body>
 
 <section class="section1">
-    <p class="h1">Bien Etre</p>
+    <p class="h1">cheveux</p>
 
      <div class="container">
      <div class="row">
      <?php  while ($afficher333=$afficher3->fetch()) { ?>
          <div class="col-md-3 col-lg-3 col-sm-12">
               <div  class="immageaffiche" >
-                  <img class="imgheight" src="<?php echo $afficher111['immage_article'] ?>" alt="immage">
+                  <img class="imgheight" src="<?php echo $afficher333['immage_article'] ?>" alt="immage">
               </div>
               <p> <?php echo $afficher333['date_creation_article'] ?> </p>
               <p> <?php echo $afficher333['titre_article'] ?></p>

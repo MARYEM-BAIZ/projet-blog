@@ -34,7 +34,7 @@
      <?php  while ($afficher333=$afficher3->fetch()) { ?>
          <div class="col-md-3 col-lg-3 col-sm-12">
               <div  class="immageaffiche" >
-                  <img class="imgheight" src="<?php echo $afficher111['immage_article'] ?>" alt="immage">
+                  <img class="imgheight" src="<?php echo $afficher333['immage_article'] ?>" alt="immage">
               </div>
               <p> <?php echo $afficher333['date_creation_article'] ?> </p>
               <p> <?php echo $afficher333['titre_article'] ?></p>
