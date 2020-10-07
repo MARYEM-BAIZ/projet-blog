@@ -60,7 +60,6 @@ try {
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Liste des utilisateurs</a>
-          <a class="dropdown-item" href="">Ajouter un utilisateur</a>
           <a class="dropdown-item" href="">Messages (Contact Us)</a>
           <a class="dropdown-item" href="mes_articles_admin.php">Liste des articles</a>
           <a class="dropdown-item" href="ajout_article.php">Ajouter un article</a>

@@ -5,6 +5,13 @@
     } catch (exception $e) {
         echo " la connexion a échoué " ." <br>";
     }   
+
+    
+    if (isset($_GET['id'])) {
+      $supprimercat1=$basemesarticlesblog->prepare(' delete from articles where id_article = ?');
+      $supprimercat11=$supprimercat1->execute(array($_GET['id']));
+      
+    }
                                                     //  echo "je doit changer date_parution_articles "
       $afficher1=$basemesarticlesblog->prepare('select * from articles where id_utilisateur=? and  id_categorie=1  ');
       $afficher11=$afficher1->execute(array($_SESSION['idutilisateur']));
@@ -20,6 +27,9 @@
       $afficher33=$afficher3->execute(array($_SESSION['idutilisateur']));
       var_dump($afficher33);
       echo " <br>";
+
+
+
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +63,7 @@
           Espace Utilisateur 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Mes articles</a>
+          <a class="dropdown-item" href="mes_articles.php">Mes articles</a>
           <a class="dropdown-item" href="ajout_article.php">Ajouter un article</a>
           <a class="dropdown-item" href="accueil.php">Déconnexion</a>
         </div>
@@ -102,40 +112,64 @@
     <section class="section1">
     <p class="h1">Bien Etre</p>
 
-     <div class="container">
-     <div class="row">
+    <table>
+        <th> article</th>
+        <th> Modifier</th>
+        <th>Supprimer</th>
+     </table>
+     <table>
      <?php  while ($afficher111=$afficher1->fetch()) { ?>
-         <div class="col-md-3 col-lg-3 col-sm-12">
-              <div  class="immageaffiche" >
+       <tr>
+       <td>
+       <div  class="immageaffiche" >
                   <img class="imgheight" src="<?php echo $afficher111['immage_article'] ?>" alt="immage">
               </div>
               <p> <?php echo $afficher111['date_creation_article'] ?> </p>
               <p> <?php echo $afficher111['titre_article'] ?></p>
               <p> <?php echo $afficher111['contenu_article'] ?></p>
-         </div>
-        <?php   } ?>
-     </div>
-     </div>
+       </td>
+        <td>
+        <a href="modifier_article.php?id=<?php echo $afficher111['id_article']?>&titre_article= <?php echo $afficher111['titre_article']?>&contenu_article=<?php echo $afficher111['contenu_article'] ?>&immage_article=<?php echo $afficher111['immage_article']?>   ">Modifier</a>
+        </td>
+        <td>
+        <a href="mes_articles.php?id=<?php echo $afficher111['id_article'] ?>">Supprimer</a>
+        </td>
+      
+       </tr>
+      <?php   } ?>
+     </table>
 
     </section>
     
     <section class="section2">
     <p class="h1">Cheuveux</p>
 
-    <div class="container">
-     <div class="row">
+    <table>
+        <th> article</th>
+        <th> Modifier</th>
+        <th>Supprimer</th>
+     </table>
+     <table>
      <?php  while ($afficher222=$afficher2->fetch()) { ?>
-         <div class="col-md-3 col-lg-3 col-sm-12">
-              <div  class="immageaffiche">
+     <tr>
+     <td>
+     <div  class="immageaffiche">
                   <img class="imgheight" src="<?php echo $afficher222['immage_article'] ?>" alt="immage">
               </div>
               <p> <?php echo $afficher222['date_creation_article'] ?> </p>
               <p> <?php echo $afficher222['titre_article'] ?></p>
               <p> <?php echo $afficher222['contenu_article'] ?></p>
-         </div>
-        <?php   } ?>
-     </div>
-     </div>
+     </td>
+     <td>
+        <a href="modifier_article.php?id=<?php echo $afficher222['id_article']?>&titre_article= <?php echo $afficher222['titre_article']?>&contenu_article=<?php echo $afficher222['contenu_article'] ?>&immage_article=<?php echo $afficher222['immage_article']?>   ">Modifier</a>
+        </td>
+        <td>
+        <a href="mes_articles.php?id= <?php echo $afficher222['id_article'] ?> ">Supprimer</a>
+        </td>
+     </tr>
+      <?php   } ?>
+     </table>
+
 
 
     </section>
@@ -144,20 +178,36 @@
     <section class="section3">
     <p class="h1"> Maquillage</p>
 
-    <div class="container">
-     <div class="row">
-     <?php  while ($afficher333=$afficher3->fetch()) { ?>
-         <div class="col-md-3 col-lg-3 col-sm-12">
-              <div  class="immageaffiche">
+    
+    
+    <table>
+        <th> article</th>
+        <th> Modifier</th>
+        <th>Supprimer</th>
+     </table>
+    <table>
+    <?php  while ($afficher333=$afficher3->fetch()) { ?>
+    <tr>
+        <td>
+        <div  class="immageaffiche">
                   <img class="imgheight" src="<?php echo $afficher333['immage_article'] ?>" alt="immage">
               </div>
               <p> <?php echo $afficher333['date_creation_article'] ?> </p>
               <p> <?php echo $afficher333['titre_article'] ?></p>
               <p> <?php echo $afficher333['contenu_article'] ?></p>
-         </div>
-        <?php   } ?>
-     </div>
-     </div>
+        </td>
+
+        <td>
+        <a href="modifier_article.php?id=<?php echo $afficher333['id_article']?>&titre_article= <?php echo $afficher333['titre_article']?>&contenu_article=<?php echo $afficher333['contenu_article'] ?>&immage_article=<?php echo $afficher333['immage_article']?>   ">Modifier</a>
+        </td>
+        <td>
+        <a href="mes_articles.php?id= <?php echo $afficher333['id_article'] ?> ">Supprimer</a>
+        </td>
+    </tr>
+
+      <?php   } ?>
+
+    </table>
 
 
     </section>
