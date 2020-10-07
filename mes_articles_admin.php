@@ -40,7 +40,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page administrateur</title>
+    <title>Articles admin</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   
@@ -67,7 +67,7 @@
           Espace Administrateur 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Liste des utilisateurs</a>
+          <a class="dropdown-item" href="liste_utilisateurs.php">Liste des utilisateurs</a>
           <a class="dropdown-item" href="">Messages (Contact Us)</a>
           <a class="dropdown-item" href="mes_articles_admin.php">Liste des articles</a>
           <a class="dropdown-item" href="ajout_article.php">Ajouter un article</a>

@@ -9,11 +9,12 @@ session_start();
        $titre="";
        $contenu="";
        if (isset($_POST['publier'])) {
-           $titre=htmlspecialchars($_POST['titrearticle']);
            $titre=strip_tags($_POST['titrearticle']);
-
-           $contenu=htmlspecialchars($_POST['contenuarticle']);
+           $titre=htmlspecialchars($_POST['titrearticle']);
+           
            $contenu=strip_tags($_POST['contenuarticle']);
+           $contenu=htmlspecialchars($_POST['contenuarticle']);
+          
 
            
           echo "<pre>";
@@ -57,8 +58,16 @@ session_start();
               }
               
           }
+       
+  
 
        }
+
+          $select_id_article=$base1blog->prepare('select * from articles');
+          $sel=$select_id_article->execute(array());
+          $seleee=$select_id_article->fetch();
+          $_SESSION['id_article']=$seleee['id_article'];
+   
        $categorie=$base1blog->prepare('select * from categories');
        $categorie1=$categorie->execute(array());
         var_dump($categorie1);

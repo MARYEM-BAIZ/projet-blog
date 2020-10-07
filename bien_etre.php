@@ -19,16 +19,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catégorie Maquillage</title>
+    <title>Catégorie bien etre</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/bien_etre.css">
+    
 </head>
 <body>
     
 <section class="section1">
     <p class="h1">Bien Etre</p>
-
+    
      <div class="container">
      <div class="row">
      <?php  while ($afficher333=$afficher3->fetch()) { ?>
@@ -38,12 +39,14 @@
               </div>
               <p> <?php echo $afficher333['date_creation_article'] ?> </p>
               <p> <?php echo $afficher333['titre_article'] ?></p>
-              <p> <?php echo $afficher333['contenu_article'] ?></p>
+              <p> <?php echo substr($afficher333['contenu_article'],0,100) ; ?></p>
+          
+        <a href="voir_article.php?id_article=<?php echo $_SESSION['id_article']; ?>&id_utilisateur=<?php echo $_SESSION['idutilisateur'] ?>"> passer</a>
+           
          </div>
         <?php   } ?>
      </div>
-     </div>
-
+    
     </section>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
