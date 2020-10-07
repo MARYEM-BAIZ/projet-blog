@@ -7,36 +7,27 @@ try {
   echo " la connexion a échoué " ." <br>";
 }   
 
-// $immageadmin= "immages/immage_admin.jpg" ;
-
-// $nbr=1;
-// $inserer=$baseadminblog->prepare(' update administrateur set avatar_administrateur= ?  where id_administrateur=1 ');
-// $inserer1=$inserer->execute(array( ));
-// var_dump($inserer1);
-// echo "  <br> ";
        
+if (isset($_GET['id'])) {
+    $supprimerer=$baseadminblog->prepare(' delete from utilisateur where id_utilisateur=?');
+    $supprimerer1=$supprimerer->execute(array($_GET['id']));  
+ }
 
+         $selectioner=$baseadminblog->prepare(' select * from utilisateur where id_role=1');
+         $selectioner1=$selectioner->execute(array());
+     
 
-
-// $id=$baseadminblog->prepare(' select * from utilisateur');
-// $id1=$id->execute(array());
-// var_dump($id1);
-// echo "  <br> ";
-// $getid=$id->fetch();
-
-//     $yeahid=$getid['id_utilisateur'];
-//     // $_SESSION['idutilisateur']=$yeahid;
-  ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page administrateur</title>
+    <title>liste des utilisateurs</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   
-    <link rel="stylesheet" type="text/css" href="css/administrateur.css">
+    <link rel="stylesheet" type="text/css" href="css/liste_utilisateurs.css">
 </head>
 <body>
 <header>
@@ -107,9 +98,60 @@ try {
     </ul> -->
   
     </header>
-
-<main>
+    <main>
         <section>
+       <div class="container">
+      <div class="row">
+      <table>
+      
+        <div class="col-md-2">
+        <th>Nom utilisateur</th>
+        </div>
+       <div class="col-md-2">
+       <th>Email utilisateur</th>
+       </div>
+       <div class="col-md-2">
+       <th>Mot de passe utilisateur</th>
+       </div>
+        
+        <div class="col-md-4">
+        <th>immage utilisateur</th>
+        </div>
+        <div class="col-md-2">
+        <th>suppression</th>
+       </div>
+      
+        </table>
+      </div>
+       </div>
+        <table>
+        <?php while ($select=$selectioner->fetch()) {?>
+            
+       <tr>
+       <div class="col-md-2">
+       <td> <?php echo $select['username_utilisateur'] ;?> </td>
+        </div>
+    
+       <div class="col-md-2">
+       <td> <?php echo $select['email_utilisateur']; ?> </td>
+        </div>
+      
+       <div class="col-md-2">
+       <td> <?php echo $select['password_utilisateur']; ?> </td>
+        </div>
+    
+       <div class="col-md-4">
+       <td> <img  class="imgheight" src="<?php echo $select['avatar_utilisateur']; ?>" alt="immage"> </td>
+        </div>
+       
+       <div class="col-md-2">
+       <td><a href="liste_utilisateurs.php?id=<?php echo $select['id_utilisateur']; ?>">supprimer</a></td>
+        </div>
+      
+       </tr>
+
+            <?php } ?>
+        </table>
            
         </section>
     </main>
