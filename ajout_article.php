@@ -42,9 +42,9 @@ session_start();
                   }
                   $chemain= "immages/" .$details['basename'];
                   
-                  $datecrea=date("d/m/y") ;
-                   $inserer=$base1blog->prepare(' insert into articles(titre_article,contenu_article,immage_article,id_categorie,id_utilisateur,date_creation_article) values(?,?,?,?,?,?)');
-                   $inserer1=$inserer->execute(array($_POST['titrearticle'],$_POST['contenuarticle'],$chemain ,$_POST['select'],$_SESSION['idutilisateur'] ,$datecrea));
+               
+                   $inserer=$base1blog->prepare(' insert into articles(titre_article,contenu_article,immage_article,id_categorie,id_utilisateur) values(?,?,?,?,?)');
+                   $inserer1=$inserer->execute(array($_POST['titrearticle'],$_POST['contenuarticle'],$chemain ,$_POST['select'],$_SESSION['idutilisateur'] ));
                    var_dump($inserer1);
                    echo "  <br> ";
                    
