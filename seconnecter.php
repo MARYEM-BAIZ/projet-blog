@@ -29,6 +29,7 @@ session_start();
              if(isset($ligne['email_utilisateur']))
              {
                    if($ligne['id_role']== 1) {
+                        $_SESSION['username'] = $ligne['username_utilisateur']; 
                        $_SESSION['idutilisateur'] = $ligne['id_utilisateur']; 
                        $_SESSION['immageutilisateur'] = $ligne['avatar_utilisateur']; 
                        $_SESSION['roleutilisateur'] = $ligne['id_role']; 
@@ -37,6 +38,7 @@ session_start();
                     header('Location:utilisateur.php'); 
                    }
                    else {
+                    $_SESSION['username'] = $ligne['username_utilisateur']; 
                     $_SESSION['idutilisateur'] = $ligne['id_utilisateur']; 
                     $_SESSION['immageutilisateur'] = $ligne['avatar_utilisateur']; 
                     $_SESSION['roleutilisateur'] = $ligne['id_role']; 

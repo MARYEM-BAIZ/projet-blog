@@ -122,7 +122,7 @@ try {
 
             <tr>
             <th>photo de profil</th>
-            <td> <?php echo $afficher['avatar_utilisateur'] ;  ?></td>
+            <td> <img src="<?php echo $afficher['avatar_utilisateur'] ;  ?>" alt="immage"></td>
             <td> <a href="modifier_profil.php?id=<?php echo $_SESSION['idutilisateur'] ?>&nom_utilisateur=<?php echo $afficher['username_utilisateur'] ?>&password_utilisateur=<?php echo $afficher['password_utilisateur'] ?>">modifier</a></td>
            </tr>
 

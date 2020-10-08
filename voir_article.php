@@ -10,9 +10,16 @@
 // $_SESSION['id_article']
 
 
-    //  if (isset($_POST['quitter'])) {
-    //     header('Location:quitter.php');
-    //  }
+     if (isset($_POST['quitter'])) {
+        header('Location:accueil.php');
+     }
+     
+     if (isset($_POST['revenir']) and  $_SESSION['roleutilisateur']==1) {
+        header('Location:utilisateur.php');
+     }
+     if (isset($_POST['revenir']) and $_SESSION['roleutilisateur']==2) {
+        header('Location:administrateur.php');
+     }
 
     if(isset($_GET['id_article']) and isset($_GET['id_utilisateur']) and isset($_POST['envoyer']) ) {
        
@@ -27,7 +34,7 @@
 
     $affichercomment=$basevoirarticleblog->prepare(' select * from commentaire where id_article =?');
     $assurer1=$affichercomment->execute(array($_GET['id_article']));
-    var_dump($assurer1);
+  
     echo " <br>";
 
     $afficher2=$affichercomment->fetch();
@@ -45,44 +52,52 @@
     <!-- <script src="ckeditor.js"></script> -->
 </head>
 <body>
-<section>
+
+
+        <section>
+            <form class="text-center   p-5" action="#" method="post">
+            <input class="btn btn-info my-4 btn-block" name="quitter" value="quitter l'article"  type="submit">
+            <input class="btn btn-info my-4 btn-block" name="revenir" value="revenir à votre page"  type="submit">
+            </form>
+        </section>
+<section class="para">
       
-<div class="container">
-     <div class="row">
-     <?php  while ($afficher333=$done->fetch()) { ?>
-         <div class="col-md-3 col-lg-3 col-sm-12">
+
+<?php  while ($afficher333=$done->fetch()) { ?>
               <div  class="immageaffiche" >
                   <img class="imgheight" src="<?php echo $afficher333['immage_article'] ?>" alt="immage">
               </div>
               <p> <?php echo $afficher333['date_creation_article'] ?> </p>
               <p> <?php echo $afficher333['titre_article'] ?></p>
               <p> <?php echo $afficher333['contenu_article'] ?></p>
-          
        
          </div>
-        <?php   } ?>
-     </div>
+    <?php   } ?>
     
 
 </section>
     <section>
-    
+        
     <form action="#" method="post">
     <textarea name="commentaire" class="ckeditor"  cols="30" rows="10"></textarea>
     <input type="submit" name="envoyer" valeur="envoyer">
     </form>
               <!-- <i class="fa fa-thumbs-up fa-3x" aria-hidden="true"></i> -->
               
-              <table>
-     <?php while ($afficher2=$affichercomment->fetch()) {  ?>
-       <tr>
-       <p class=""><?php echo $afficher2['id_utilisateur'] ;  ?></p>
-        <p class=""><?php echo $afficher2['date_commentaire'] ;  ?></p>
-        <p class=""><?php echo $afficher2['contenu_commentaire'] ;  ?></p>
-        
-       </tr>
-     <?php }  ?>
-     </table>
+      
+        <?php   while($afficher2 = $affichercomment->fetch()) {  ?>
+         
+             <div class="commentaire">
+             <?php   echo $_SESSION['username'] ?>
+                
+                <?php   echo $afficher2['date_commentaire'] ?>
+               
+           
+           <?php   echo $afficher2['contenu_commentaire'] ?>
+
+             </div>
+        <?php   }  ?>
+       
         
     </section>
 

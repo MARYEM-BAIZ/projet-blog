@@ -22,7 +22,7 @@ try {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   
-    <link rel="stylesheet" type="text/css" href="css/administrateur.css">
+    <link rel="stylesheet" type="text/css" href="css/.css">
 </head>
 <body>
 <header>
@@ -129,7 +129,7 @@ try {
 
             <tr>
             <th>photo de profil</th>
-            <td> <?php echo $afficher['avatar_utilisateur'] ;  ?></td>
+            <td> <img src="<?php echo $afficher['avatar_utilisateur'] ;  ?>" alt="immage"></td>
             <td> <a href="modifier_profil.php?id=<?php echo $_SESSION['idutilisateur'] ?>&nom_utilisateur=<?php echo $afficher['username_utilisateur'] ?>&password_utilisateur=<?php echo $afficher['password_utilisateur'] ?>">modifier</a></td>
            </tr>
 

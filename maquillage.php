@@ -41,7 +41,7 @@
               <p> <?php echo $afficher333['titre_article'] ?></p>
         
               <p> <?php echo substr($afficher333['contenu_article'],0,30)?></p>
-              <a href="voir_article.php?id_article=<?php echo $_SESSION['id_article']; ?>&id_utilisateur=<?php echo $_SESSION['idutilisateur'] ?>">Voir la suite</a>
+              <a href="voir_article.php?id_article=<?php echo $afficher333['id_article']; ?>&id_utilisateur=<?php echo $_SESSION['idutilisateur'] ?>">Voir la suite</a>
          
          </div>
         <?php   } ?>

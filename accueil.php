@@ -1,4 +1,15 @@
+<?php   
+ 
+ session_start();
+ if (isset($_POST['revenir']) and  $_SESSION['roleutilisateur']==1) {
+  header('Location:utilisateur.php');
+}
+if (isset($_POST['revenir']) and $_SESSION['roleutilisateur']==2) {
+  header('Location:administrateur.php');
+}
 
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +58,11 @@
 </header>
 
 <main>
+<section>
+            <form class="text-center   p-5" action="#" method="post">
+            <input class="btn btn-info my-4 btn-block" name="revenir" value="revenir à votre page"  type="submit">
+            </form>
+        </section>
   
      <section class="section1">
        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente illum quasi facilis esse molestias vel dolores quae accusantium magni natus sunt eligendi, fugit veniam molestiae odit autem ipsum vitae dolorum ea. Itaque, enim quo quibusdam laudantium quisquam necessitatibus tenetur adipisci.</p>

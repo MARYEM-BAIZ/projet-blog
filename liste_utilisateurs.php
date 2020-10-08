@@ -51,7 +51,7 @@ if (isset($_GET['id'])) {
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="liste_utilisateurs.php">Liste des utilisateurs</a>
-          <a class="dropdown-item" href="">Messages (Contact Us)</a>
+          <a class="dropdown-item" href="message_contact_us.php">Messages (Contact Us)</a>
           <a class="dropdown-item" href="mes_articles_admin.php">Liste des articles</a>
           <a class="dropdown-item" href="ajout_article.php">Ajouter un article</a>
           <!-- <a class="dropdown-item" href="deconnexion.php">Déconnexion</a> -->
