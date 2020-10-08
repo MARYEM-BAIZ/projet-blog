@@ -22,6 +22,9 @@
         echo " <br>";
     }
 
+     $done=$basevoirarticleblog->prepare(' select * from articles where id_article =?');
+     $done1=$done->execute(array($_GET['id_article']));
+
     $affichercomment=$basevoirarticleblog->prepare(' select * from commentaire where id_article =?');
     $assurer1=$affichercomment->execute(array($_GET['id_article']));
     var_dump($assurer1);
@@ -43,9 +46,24 @@
 </head>
 <body>
 <section>
-       <!-- <form action="#" method="post">
-       <input type="submit" name="quitter" value="quitter l'article">
-       </form> -->
+      
+<div class="container">
+     <div class="row">
+     <?php  while ($afficher333=$done->fetch()) { ?>
+         <div class="col-md-3 col-lg-3 col-sm-12">
+              <div  class="immageaffiche" >
+                  <img class="imgheight" src="<?php echo $afficher333['immage_article'] ?>" alt="immage">
+              </div>
+              <p> <?php echo $afficher333['date_creation_article'] ?> </p>
+              <p> <?php echo $afficher333['titre_article'] ?></p>
+              <p> <?php echo $afficher333['contenu_article'] ?></p>
+          
+       
+         </div>
+        <?php   } ?>
+     </div>
+    
+
 </section>
     <section>
     
