@@ -10,9 +10,9 @@
 // $_SESSION['id_article']
 
 
-     if (isset($_POST['quitter'])) {
-        header('Location:accueil.php');
-     }
+    //  if (isset($_POST['quitter'])) {
+    //     header('Location:accueil.php');
+    //  }
      
      if (isset($_POST['revenir']) and  $_SESSION['roleutilisateur']==1) {
         header('Location:utilisateur.php');
@@ -56,11 +56,17 @@
 
         <section>
             <form class="text-center   p-5" action="#" method="post">
-            <input class="btn btn-info my-4 btn-block" name="quitter" value="quitter l'article"  type="submit">
-            <input class="btn btn-info my-4 btn-block" name="revenir" value="revenir à votre page"  type="submit">
+            <!-- <input class="btn btn-info my-4 btn-block" name="quitter" value="quitter l'article"  type="submit"> -->
+            <?php  
+            if (isset($_SESSION['idutilisateur'])) {   ?>
+    
+            <input class="btn btn-info my-4 btn-block" name="revenir" value="revenir à votre page"  type="submit"> 
+            <?php   
+            }
+             ?>
             </form>
         </section>
-<section class="para">
+<section class="">
       
 
 <?php  while ($afficher333=$done->fetch()) { ?>

@@ -33,6 +33,7 @@ session_start();
                        $_SESSION['idutilisateur'] = $ligne['id_utilisateur']; 
                        $_SESSION['immageutilisateur'] = $ligne['avatar_utilisateur']; 
                        $_SESSION['roleutilisateur'] = $ligne['id_role']; 
+                       $_SESSION['emailutilisateur'] = $ligne['email_utilisateur']; 
                       
 
                     header('Location:utilisateur.php'); 
@@ -41,7 +42,8 @@ session_start();
                     $_SESSION['username'] = $ligne['username_utilisateur']; 
                     $_SESSION['idutilisateur'] = $ligne['id_utilisateur']; 
                     $_SESSION['immageutilisateur'] = $ligne['avatar_utilisateur']; 
-                    $_SESSION['roleutilisateur'] = $ligne['id_role']; 
+                    $_SESSION['roleutilisateur'] = $ligne['id_role'];
+                    $_SESSION['emailutilisateur'] = $ligne['email_utilisateur'];  
                  
 
                     header('Location:administrateur.php'); 

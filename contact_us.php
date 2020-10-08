@@ -1,3 +1,34 @@
+<?php 
+session_start();
+              
+try {
+  $baseadminblog= new PDO ('mysql:host=localhost;dbname=blog;charset=utf8','root','');
+} catch (exception $e) {
+  echo " la connexion a échoué " ." <br>";
+}   
+      
+    if (isset($_POST['envoyer'])) {
+        
+        $nom=strip_tags($_POST['nomutilisateur']);
+        $nom=htmlspecialchars($_POST['nomutilisateur']);
+
+        $email=strip_tags($_POST['email']);
+        $email=htmlspecialchars($_POST['email']);
+
+        $contenu=strip_tags($_POST['message']);
+        $contenu=htmlspecialchars($_POST['message']);
+
+         if ($_SESSION['username']== $_POST['nomutilisateur'] and $_SESSION['emailutilisateur']== $_POST['email'] ) {
+            $inserer=$baseadminblog->prepare(' insert into contacter_admin(nom_utilisateur,email_utilisateur,contenu_contact) values(?,?,?) ');
+            $inserer1=$inserer->execute(array($_POST['nomutilisateur'],$_POST['email'],$_POST['message']));
+           
+            var_dump($inserer1);
+            echo" <br>";   
+         }
+        
+    }
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,33 +48,35 @@
              </div>
              <div class="col-6">
                  <!-- Default form contact -->
-<form class="text-center  p-5" action="#!">
+<form class="text-center  p-5" method="post" action="#!">
 
 <p class="h4 mb-4">Contact us</p>
 
 <!-- Name -->
-<input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
+<input name="nomutilisateur" type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
 
 <!-- Email -->
-<input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
+<input name="email" type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
 
-<!-- Subject -->
+<!-- Subject
 <label>Subject</label>
 <select class="browser-default custom-select mb-4">
     <option value="" disabled>Choose option</option>
     <option value="1" selected>Feedback</option>
     <option value="2">Report a bug</option>
-</select>
+</select> -->
 
 <!-- Message -->
 <div class="form-group">
-    <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
+    <textarea name="message" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
 </div>
 
 <!-- Send button -->
-<button class="btn btn-info btn-block" type="submit">Send</button>
+<button name="envoyer" class="btn btn-info btn-block" type="submit">envoyer</button>
 
 </form>
+  <p> <?php  echo $_SESSION['emailutilisateur'];?></p>
+  <p> <?php  echo $_SESSION['username'];?></p>
 <!-- Default form contact -->
              </div>
          </div>

@@ -1,5 +1,15 @@
 <?php 
 session_start();
+              
+try {
+  $baseadminblog= new PDO ('mysql:host=localhost;dbname=blog;charset=utf8','root','');
+} catch (exception $e) {
+  echo " la connexion a échoué " ." <br>";
+}   
+      
+
+       $select=$baseadminblog->prepare(' select * from contacter_admin ');
+       $select->execute(array());
 ?>
 
 <!DOCTYPE html>
@@ -95,7 +105,21 @@ session_start();
 
 <main>
         <section>
-           
+          <table>
+            <th>nom utilisateur</th>
+            <th>email utilisateur</th>
+            <th>contenu message</th>
+          </table>
+          <table>
+          <?php  while ($afficher333=$select->fetch()) { ?>
+            <tr>
+                 <td><?php echo $afficher333['nom_utilisateur'] ?></td>
+                 <td><?php echo $afficher333['email_utilisateur'] ?></td>
+                 <td><?php echo $afficher333['contenu_contact'] ?></td>
+                 <td><a href="">répondre</a></td>
+            </tr>
+            <?php   } ?>
+          </table>
         </section>
     </main>
 <footer>

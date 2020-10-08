@@ -1,12 +1,12 @@
 <?php   
  
  session_start();
- if (isset($_POST['revenir']) and  $_SESSION['roleutilisateur']==1) {
-  header('Location:utilisateur.php');
-}
-if (isset($_POST['revenir']) and $_SESSION['roleutilisateur']==2) {
-  header('Location:administrateur.php');
-}
+//  if (isset($_POST['revenir']) and  $_SESSION['roleutilisateur']==1) {
+//   header('Location:utilisateur.php');
+// }
+// if (isset($_POST['revenir']) and $_SESSION['roleutilisateur']==2) {
+//   header('Location:administrateur.php');
+// }
 
 
  ?>
@@ -59,9 +59,9 @@ if (isset($_POST['revenir']) and $_SESSION['roleutilisateur']==2) {
 
 <main>
 <section>
-            <form class="text-center   p-5" action="#" method="post">
+            <!-- <form class="text-center   p-5" action="#" method="post">
             <input class="btn btn-info my-4 btn-block" name="revenir" value="revenir à votre page"  type="submit">
-            </form>
+            </form> -->
         </section>
   
      <section class="section1">
