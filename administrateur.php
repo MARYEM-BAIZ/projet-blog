@@ -60,9 +60,19 @@ try {
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="liste_utilisateurs.php">Liste des utilisateurs</a>
-          <a class="dropdown-item" href="">Messages (Contact Us)</a>
+          <a class="dropdown-item" href="message_contact_us.php">Messages (Contact Us)</a>
           <a class="dropdown-item" href="mes_articles_admin.php">Liste des articles</a>
           <a class="dropdown-item" href="ajout_article.php">Ajouter un article</a>
+          <!-- <a class="dropdown-item" href="deconnexion.php">Déconnexion</a> -->
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link mr-5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          profil
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="profil_admin.php">Voir profil</a>
           <a class="dropdown-item" href="deconnexion.php">Déconnexion</a>
         </div>
       </li>

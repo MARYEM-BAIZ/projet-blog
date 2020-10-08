@@ -1,50 +1,17 @@
 <?php 
-      session_start();
-      try {
-       $basemesarticlesblog= new PDO ('mysql:host=localhost;dbname=blog;charset=utf8','root','');
-   } catch (exception $e) {
-       echo " la connexion a échoué " ." <br>";
-   }   
+session_start();
+?>
 
-   if(isset($_GET['id'])) {
-    $supprimercat1=$basemesarticlesblog->prepare(' delete from articles where id_article = ?');
-    $supprimercat11=$supprimercat1->execute(array($_GET['id']));
-    
-
-  }
-                                                   //  echo "je doit changer date_parution_articles "
-     $afficher1=$basemesarticlesblog->prepare('select * from articles where id_utilisateur=? and  id_categorie=1  ');
-     $afficher11=$afficher1->execute(array($_SESSION['idutilisateur']));
-     var_dump($afficher11);
-     echo " <br>";
-                                                 //  echo "je doit changer date_parution_articles "
-     $afficher2=$basemesarticlesblog->prepare('select * from articles where id_utilisateur=? and  id_categorie=2   ');
-     $afficher22=$afficher2->execute(array($_SESSION['idutilisateur']));
-     var_dump($afficher22);
-     echo " <br>";
-                           //  echo "je doit changer date_parution_articles "
-     $afficher3=$basemesarticlesblog->prepare('select * from articles where id_utilisateur=? and  id_categorie=3  ');
-     $afficher33=$afficher3->execute(array($_SESSION['idutilisateur']));
-     var_dump($afficher33);
-     echo " <br>";
-
-      //  echo "partie suppression des articles"
-
-
-     
-
-
-  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles admin</title>
+    <title>Page administrateur</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   
-    <link rel="stylesheet" type="text/css" href="css/mes_articles_admin.css">
+    <link rel="stylesheet" type="text/css" href="css/administrateur.css">
 </head>
 <body>
 <header>
@@ -127,104 +94,9 @@
     </header>
 
 <main>
-<section class="section1">
-    <p class="h1">Bien Etre</p>
-
-     <table>
-        <th> article</th>
-        <th> Modifier</th>
-        <th>Supprimer</th>
-     </table>
-     <table>
-     <?php  while ($afficher111=$afficher1->fetch()) { ?>
-       <tr>
-       <td>
-       <div  class="immageaffiche" >
-                  <img class="imgheight" src="<?php echo $afficher111['immage_article'] ?>" alt="immage">
-              </div>
-              <p> <?php echo $afficher111['date_creation_article'] ?> </p>
-              <p> <?php echo $afficher111['titre_article'] ?></p>
-              <p> <?php echo $afficher111['contenu_article'] ?></p>
-       </td>
-        <td>
-        <a href="modifier_article.php?id=<?php echo $afficher111['id_article']?>&titre_article= <?php echo $afficher111['titre_article']?>&contenu_article=<?php echo $afficher111['contenu_article'] ?>&immage_article=<?php echo $afficher111['immage_article']?>   ">Modifier</a>
-        </td>
-        <td>
-        <a href="mes_articles_admin.php?id= <?php echo $afficher111['id_article'] ?> ">Supprimer</a>
-        </td>
-       </tr>
-      <?php   } ?>
-     </table>
-
-    </section>
-    
-    <section class="section2">
-    <p class="h1">Cheuveux</p>
-
-   
-
-     <table>
-        <th> article</th>
-        <th> Modifier</th>
-        <th>Supprimer</th>
-     </table>
-     <table>
-     <?php  while ($afficher222=$afficher2->fetch()) { ?>
-     <tr>
-     <td>
-     <div  class="immageaffiche">
-                  <img class="imgheight" src="<?php echo $afficher222['immage_article'] ?>" alt="immage">
-              </div>
-              <p> <?php echo $afficher222['date_creation_article'] ?> </p>
-              <p> <?php echo $afficher222['titre_article'] ?></p>
-              <p> <?php echo $afficher222['contenu_article'] ?></p>
-     </td>
-     <td>
-        <a href="modifier_article.php?id=<?php echo $afficher222['id_article']?>&titre_article= <?php echo $afficher222['titre_article']?>&contenu_article=<?php echo $afficher222['contenu_article'] ?>&immage_article=<?php echo $afficher222['immage_article']?>   ">Modifier</a>
-        </td>
-        <td>
-        <a href="mes_articles_admin.php?id= <?php echo $afficher222['id_article'] ?> ">Supprimer</a>
-        </td>
-     </tr>
-      <?php   } ?>
-     </table>
-
-    </section>
-    
-
-    <section class="section3">
-    <p class="h1">Bien Maquillage</p>
-
-     <table>
-        <th> article</th>
-        <th> Modifier</th>
-        <th>Supprimer</th>
-     </table>
-    <table>
-    <?php  while ($afficher333=$afficher3->fetch()) { ?>
-    <tr>
-        <td>
-        <div  class="immageaffiche">
-                  <img class="imgheight" src="<?php echo $afficher333['immage_article'] ?>" alt="immage">
-              </div>
-              <p> <?php echo $afficher333['date_creation_article'] ?> </p>
-              <p> <?php echo $afficher333['titre_article'] ?></p>
-              <p> <?php echo $afficher333['contenu_article'] ?></p>
-        </td>
-
-        <td>
-        <a href="modifier_article.php?id=<?php echo $afficher333['id_article']?>&titre_article= <?php echo $afficher333['titre_article']?>&contenu_article=<?php echo $afficher333['contenu_article'] ?>&immage_article=<?php echo $afficher333['immage_article']?>   ">Modifier</a>
-        </td>
-        <td>
-        <a href="mes_articles_admin.php?id= <?php echo $afficher333['id_article'] ?> ">Supprimer</a>
-        </td>
-    </tr>
-
-      <?php   } ?>
-
-    </table>
-
-    </section>
+        <section>
+           
+        </section>
     </main>
 <footer>
     <article class="article1">

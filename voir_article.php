@@ -10,6 +10,10 @@
 // $_SESSION['id_article']
 
 
+    //  if (isset($_POST['quitter'])) {
+    //     header('Location:quitter.php');
+    //  }
+
     if(isset($_GET['id_article']) and isset($_GET['id_utilisateur']) and isset($_POST['envoyer']) ) {
        
         $inserercomment=$basevoirarticleblog->prepare("insert into commentaire(contenu_commentaire , id_article , id_utilisateur) values(?,?,?) ");
@@ -18,12 +22,12 @@
         echo " <br>";
     }
 
-    $affichercomment=$basevoirarticleblog->prepare(' select * from commentaire ');
-    $assurer1=$affichercomment->execute(array());
+    $affichercomment=$basevoirarticleblog->prepare(' select * from commentaire where id_article =?');
+    $assurer1=$affichercomment->execute(array($_GET['id_article']));
     var_dump($assurer1);
     echo " <br>";
 
-    $afficher2=$affichercomment->fetch()
+    $afficher2=$affichercomment->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +42,11 @@
     <!-- <script src="ckeditor.js"></script> -->
 </head>
 <body>
+<section>
+       <!-- <form action="#" method="post">
+       <input type="submit" name="quitter" value="quitter l'article">
+       </form> -->
+</section>
     <section>
     
     <form action="#" method="post">
@@ -46,9 +55,16 @@
     </form>
               <!-- <i class="fa fa-thumbs-up fa-3x" aria-hidden="true"></i> -->
               
-        <p class=""><?php echo $afficher2['id_utilisateur'] ;  ?></p>
+              <table>
+     <?php while ($afficher2=$affichercomment->fetch()) {  ?>
+       <tr>
+       <p class=""><?php echo $afficher2['id_utilisateur'] ;  ?></p>
         <p class=""><?php echo $afficher2['date_commentaire'] ;  ?></p>
         <p class=""><?php echo $afficher2['contenu_commentaire'] ;  ?></p>
+        
+       </tr>
+     <?php }  ?>
+     </table>
         
     </section>
 

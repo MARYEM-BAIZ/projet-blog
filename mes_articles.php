@@ -65,12 +65,22 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="mes_articles.php">Mes articles</a>
           <a class="dropdown-item" href="ajout_article.php">Ajouter un article</a>
-          <a class="dropdown-item" href="accueil.php">Déconnexion</a>
+          <!-- <a class="dropdown-item" href="accueil.php">Déconnexion</a> -->
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="accueil.php">Q/A</a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link mr-5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          profil
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="profil_utilisateur.php">Voir profil</a>
+          <a class="dropdown-item" href="deconnexion.php">Déconnexion</a>
+        </div>
       </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="accueil.php">Q/A</a>
+      </li> -->
     </ul>
     
   </div>

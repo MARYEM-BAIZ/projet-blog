@@ -1,10 +1,19 @@
 <?php 
 session_start();
+   
+try {
+    $baseblog= new PDO ('mysql:host=localhost;dbname=blog;charset=utf8','root','');
+  } catch (exception $e) {
+    echo " la connexion a échoué " ." <br>";
+  }  
 
-// echo $_SESSION['idutilisateur'] ;
-// echo $_SESSION['immageutilisateur'] ;
-// echo $_SESSION['roleutilisateur'] ;
-  ?>
+  $select=$baseblog->prepare(' select * from utilisateur where id_utilisateur= ? and id_role=1');
+  $selectionner=$select->execute(array( $_SESSION['idutilisateur']));
+  var_dump($selectionner);
+  echo " <br>";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +23,7 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   
-    <link rel="stylesheet" type="text/css" href="utilisateur.css">
+    <link rel="stylesheet" type="text/css" href="">
 </head>
 <body>
     <header>
@@ -92,6 +101,34 @@ session_start();
     <main>
         <section>
            
+        <table>
+             <?php while ($afficher=$select->fetch()) {  ?>
+           <tr>
+            <th>username</th>
+            <td> <?php echo $afficher['username_utilisateur'] ;  ?></td>
+            <td> <a href="modifier_profil.php?id=<?php echo $_SESSION['idutilisateur'] ?>&nom_utilisateur=<?php echo $afficher['username_utilisateur']?>&password_utilisateur=<?php echo $afficher['password_utilisateur'] ?>">modifier</a></td>
+           </tr>
+          
+           <tr>
+             <th>email</th>
+             <td> <?php echo $afficher['email_utilisateur'] ;  ?></td>
+           </tr>
+
+           <tr>
+            <th>mot de passe</th>
+            <td> <?php echo $afficher['password_utilisateur'] ;  ?></td>
+            <td> <a href="modifier_profil.php?id=<?php echo $_SESSION['idutilisateur'] ?>&nom_utilisateur=<?php echo $afficher['username_utilisateur'] ?>&password_utilisateur=<?php echo $afficher['password_utilisateur'] ?> ">modifier</a></td>
+            </tr>
+
+            <tr>
+            <th>photo de profil</th>
+            <td> <?php echo $afficher['avatar_utilisateur'] ;  ?></td>
+            <td> <a href="modifier_profil.php?id=<?php echo $_SESSION['idutilisateur'] ?>&nom_utilisateur=<?php echo $afficher['username_utilisateur'] ?>&password_utilisateur=<?php echo $afficher['password_utilisateur'] ?>">modifier</a></td>
+           </tr>
+
+           <?php }  ?>
+             </table>
+             
         </section>
     </main>
     <footer>
