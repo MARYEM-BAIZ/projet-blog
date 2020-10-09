@@ -64,23 +64,20 @@
             </form> -->
         </section>
   
-     <section class="section1">
-       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente illum quasi facilis esse molestias vel dolores quae accusantium magni natus sunt eligendi, fugit veniam molestiae odit autem ipsum vitae dolorum ea. Itaque, enim quo quibusdam laudantium quisquam necessitatibus tenetur adipisci.</p>
-     </section>
-
+    
      <section class="section2">
-       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non, magni quisquam. Provident, debitis quidem. Saepe eligendi sed dolor officia? Cumque.</p>
-       <form action="inscrire.php" method="post" enctype="multipart/form-data">
+       
+       <form class="mb-4 " action="inscrire.php" method="post" enctype="multipart/form-data">
+       <!-- <button type="button" name="inscrire" class="btn btn-primary ">S'inscrire</button> -->
         <input type="submit" name="inscrire" value="S'inscrire" class="btninscrire">
        </form>
-     </section>
-
-     <section class="section3">
-     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non, magni quisquam. Provident, debitis quidem. Saepe eligendi sed dolor officia? Cumque.</p>
-       <form action="seconnecter.php" method="post">
+       <form class="" action="seconnecter.php" method="post">
+       <!-- <button type="button" name="seconnecter" class="btn btn-primary ">Se connecter</button> -->
        <input type="submit" name="seconnecter" value="Se Connecter" class="btnseconnecter">
        </form>
      </section>
+
+     
 </main>
 <footer>
     <article class="article1 ">
