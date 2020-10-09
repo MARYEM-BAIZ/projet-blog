@@ -24,7 +24,7 @@
 
 <header>
 
-<img class="immageheader" src="immages/logo-blog.png" alt="immage">
+<img  class="immageheader" src="immages/logo-blog.png" alt="immage">
         
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <!-- <a class="navbar-brand" href="#">Navbar</a> -->
@@ -36,61 +36,95 @@
                     <ul class="navbar-nav mr-auto">
                     
                     <li class="nav-item">
-                        <a class="nav-link ml-3 mr-5" href="accueil.php">Accueil</a>
+                        <a class="nav-link ml-3 mr-5 h4" href="accueil.php">Accueil</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link mr-5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link mr-5 dropdown-toggle h4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Catégories
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="bien_etre.php">Bien etre </a>
-                        <a class="dropdown-item" href="cheuveux.php">Cheveux</a>
-                        <a class="dropdown-item" href="maquillage.php">Maquillage</a>
+                        <a class="dropdown-item h5" href="bien_etre.php">Bien etre </a>
+                        <a class="dropdown-item h5" href="cheuveux.php">Cheveux</a>
+                        <a class="dropdown-item h5" href="maquillage.php">Maquillage</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact_us.php">Contact Us</a>
+                        <a class="nav-link h4" href="contact_us.php">Contact Us</a>
                     </li>
                     </ul>
                     
                 </div>
+              
+
+               <div class="">
+               <form class="" action="seconnecter.php" method="post">
+       <!-- <button type="button" name="seconnecter" class="btn btn-primary ">Se connecter</button> -->
+       <input type="submit" name="seconnecter" value="Se Connecter" class="btn mr-4 text-muted font-weight-bold  btn-outline-info h4 ">
+       </form>
+               </div>
+
+               <div class="">
+               <form class=" " action="inscrire.php" method="post" enctype="multipart/form-data">
+       <!-- <button type="button" name="inscrire" class="btn btn-primary ">S'inscrire</button> -->
+        <input type="submit" class=" btn mr-4 text-muted font-weight-bold btn-outline-info h4 " name="inscrire" value="S'inscrire" >
+       </form>
+               </div>
     </nav>
 </header>
 
-<main>
-<section>
+<main class="bg-white">
+
             <!-- <form class="text-center   p-5" action="#" method="post">
             <input class="btn btn-info my-4 btn-block" name="revenir" value="revenir à votre page"  type="submit">
             </form> -->
-        </section>
+       
   
     
-     <section class="section2">
+     <section class=" w-75 bg-white section1">
        
-       <form class="mb-4 " action="inscrire.php" method="post" enctype="multipart/form-data">
-       <!-- <button type="button" name="inscrire" class="btn btn-primary ">S'inscrire</button> -->
-        <input type="submit" name="inscrire" value="S'inscrire" class="btninscrire">
-       </form>
-       <form class="" action="seconnecter.php" method="post">
-       <!-- <button type="button" name="seconnecter" class="btn btn-primary ">Se connecter</button> -->
-       <input type="submit" name="seconnecter" value="Se Connecter" class="btnseconnecter">
-       </form>
+      
+     
      </section>
+
+     <section class=" w-75 bg-white section2">
+
+     </section>
+     
 
      
 </main>
 <footer>
-    <article class="article1 ">
-    <a href="contact_us.php">Contact Us </a>
+
+      <div class="container">
+      <div class="row">
+
+
+      <div class="col-md-2 ">
+     
+      </div>
+      
+        <div class="col-md-6 ">
+        <article class="article1 ">
+    <a class=" h2"  href="contact_us.php">Contact Us </a>
     </article>
-    <article class="article2">
-    <p>Follow us </p>
-    <div class="div_article2_footer ">
-    <a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
-    <a href=""><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-   <a href=""> <i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-    <a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+        </div>
+
+        <div class="col-md-4 ">
+        <article class="article2">
+    <p class="h2">Follow us </p>
+    <div class="  ">
+    <a href=""><i class="fa fa-instagram text-info fa-3x" aria-hidden="true"></i></a>
+    <a href=""><i class="fa fa-facebook-square text-info fa-3x" aria-hidden="true"></i></a>
+   <a href=""> <i class="fa fa-twitter-square text-info fa-3x" aria-hidden="true"></i></a>
+    <a href=""><i class="fa fa-linkedin-square text-info fa-3x" aria-hidden="true"></i></a>
     </div>
+        </div>
+
+
+      </div>
+      </div>
+    
+    
     </article>
   </footer> 
   
