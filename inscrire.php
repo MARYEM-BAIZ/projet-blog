@@ -97,7 +97,7 @@
                <!-- Default form register -->
 <form class="text-center  p-5" action="#!" method="post"  enctype="multipart/form-data">
 
-<p class="h4 mb-4">S'incrire</p>
+<p style=" color:  #ea899a" class="h2 mb-4">S'incrire</p>
 
 
    
@@ -119,7 +119,7 @@
 
 
 <!-- Sign up button -->
-<input class="btn btn-info my-4 btn-block" name="inscrire" value="S'inscrire"  type="submit">
+<input style="color:gray " class="btn btn-info font-weight-bold my-4 h2 btn-block" name="inscrire" value="S'inscrire"  type="submit">
 
 
 </form>

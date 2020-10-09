@@ -135,7 +135,10 @@ session_start();
            <!-- Default form subscription -->
 <form class="text-center   p-5" action="#" method="post">
 
-<p class="h4 mb-4">Connexion</p>
+
+<p style=" color:  #ea899a"  class="h4 mb-4">Connexion</p>
+
+
 
 <!-- <p>Join our mailing list. We write rarely, but only the best content.</p> -->
 
@@ -145,10 +148,10 @@ session_start();
 
 
 <!-- Email -->
-<input type="email" id="defaultSubscriptionFormEmail" class="form-control mb-4" name="email" placeholder="E-mail">
+<input style="color:gray " type="email" id="defaultSubscriptionFormEmail" class="form-control mb-4" name="email" placeholder="E-mail">
 
 <!-- Password -->
-<input type="password" id="defaultSubscriptionFormPassword" class="form-control mb-4" name="password" placeholder="Mot de passe">
+<input style="color:gray " type="password" id="defaultSubscriptionFormPassword" class="form-control mb-4" name="password" placeholder="Mot de passe">
 
 <!-- <select name="select" id="" class="form-control  mb-4" >
        <?php while ($ro=$role->fetch()){  ?>
@@ -157,8 +160,10 @@ session_start();
      </select>  -->
 
 <!-- Sign in button -->
-<button class="btn btn-info btn-block" name="seconnecter" type="submit">Se Connecter</button>
+<div >
+<button style="color:gray " class="btn btn-info font-weight-bold btn-block" name="seconnecter" type="submit">Se Connecter</button>
 
+</div>
  
 
 

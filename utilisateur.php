@@ -14,7 +14,7 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   
-    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" type="text/css" href="css/utilisateur.css">
 </head>
 <body>
     <header>
@@ -58,7 +58,7 @@ session_start();
  <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item avatar">
         <a class="nav-link p-0" href="#">
-          <img src="   <?php echo     $_SESSION['immageutilisateur'] ?>" alt="immage" class="rounded-circle mr-3 z-depth-0"
+          <img src="   <?php echo     $_SESSION['immageutilisateur'] ?>" alt="immage" class="immageheader"
             alt="avatar image" height="35">
         </a>
       </li>

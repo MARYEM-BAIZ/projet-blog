@@ -67,7 +67,7 @@ try {
  <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item avatar">
         <a class="nav-link p-0" href="#">
-          <img src="   <?php echo     $_SESSION['immageutilisateur'] ?>" alt="immage" class="rounded-circle mr-3 z-depth-0"
+          <img src="   <?php echo     $_SESSION['immageutilisateur'] ?>" alt="immage" class="immageheader"
             alt="avatar image" height="35">
         </a>
       </li>

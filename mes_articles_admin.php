@@ -94,7 +94,7 @@
         <!-- <p> je dois metre ici l'immage du admin</p> -->
            <!-- <p> je dois metre ici l'immage du admin</p> -->
               <!-- <p> je dois metre ici l'immage du admin</p> -->
-          <img src="   <?php echo  $_SESSION['immageutilisateur'] ?>" alt="immage" class="rounded-circle mr-3 z-depth-0"
+          <img src="   <?php echo  $_SESSION['immageutilisateur'] ?>" alt="immage" class="immageheader"
             alt="avatar image" height="35">
         </a>
       </li>

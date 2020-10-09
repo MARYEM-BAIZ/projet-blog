@@ -8,6 +8,25 @@
 //   header('Location:administrateur.php');
 // }
 
+try {
+    $base1blog= new PDO ('mysql:host=localhost;dbname=blog;charset=utf8','root','');
+} catch (exception $e) {
+    echo " la connexion a échoué " ." <br>";
+}           
+         
+$select1=$base1blog->prepare('select * from articles where id_categorie=1 order by id_article desc limit 4');
+$select1->execute(array());
+//  var_dump();
+//  echo "  <br> ";
+
+$select2=$base1blog->prepare('select * from articles where id_categorie=2 order by id_article desc limit 4');
+$select2->execute(array());
+
+
+$select3=$base1blog->prepare('select * from articles where id_categorie=3 order by id_article desc limit 4');
+$select3->execute(array());
+
+  
 
  ?>
 <!DOCTYPE html>
@@ -22,11 +41,13 @@
 </head>
 <body>
 
-<header>
+<header >  
 
-<img  class="immageheader" src="immages/logo-blog.png" alt="immage">
+<div class="pl-3 pt-3 pb-3">
+<a href="accueil.php"><img  class="immageheader" src="immages/logo-blog.png" alt="immage"></a>
+</div>
         
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
                 <!-- <a class="navbar-brand" href="#">Navbar</a> -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -36,10 +57,10 @@
                     <ul class="navbar-nav mr-auto">
                     
                     <li class="nav-item">
-                        <a class="nav-link ml-3 mr-5 h4" href="accueil.php">Accueil</a>
+                        <a class="nav-link ml-3 mr-5 h5" href="accueil.php">Accueil</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link mr-5 dropdown-toggle h4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link mr-5 dropdown-toggle h5" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Catégories
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -49,13 +70,16 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link h4" href="contact_us.php">Contact Us</a>
+                        <a class="nav-link h5" href="contact_us.php">Contact Us</a>
                     </li>
                     </ul>
                     
                 </div>
               
-
+             
+                
+           
+            <?php    if (!isset($_SESSION['idutilisateur'])) {  ?>
                <div class="">
                <form class="" action="seconnecter.php" method="post">
        <!-- <button type="button" name="seconnecter" class="btn btn-primary ">Se connecter</button> -->
@@ -69,6 +93,18 @@
         <input type="submit" class=" btn mr-4 text-muted font-weight-bold btn-outline-info h4 " name="inscrire" value="S'inscrire" >
        </form>
                </div>
+               <?php  }  ?>
+               <?php    if (isset($_SESSION['idutilisateur'])) {  ?>
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item avatar">
+        <a class="nav-link p-0" href="administrateur.php">
+          <img name="image" src="   <?php echo     $_SESSION['immageutilisateur'] ?>" alt="immage" class="immageheader"
+            alt="avatar image" height="35">
+        </a>
+      </li>
+    </ul> 
+                <?php  }  ?>
+
     </nav>
 </header>
 
@@ -80,17 +116,67 @@
        
   
     
-     <section class=" w-75 bg-white section1">
-       
-      
+     <section class=" w-75 bg-white mb-5 p-5">
+       <p class="h2 mb-5">* Les derniers articles de la categorie ( bien etre ) :</p>
+      <div class="container">
+          <div class="row">
+          <?php  while ($afficher1=$select1->fetch()) {?>
+            <div class="col-md-3">
+              <div class="mb-2   ">
+                  <img class="imgimg" src="<?php echo $afficher1['immage_article'] ?>" alt="immage">
+              </div>                        
+               <p><?php echo $afficher1['titre_article'] ?></p>
+               <hr>
+               <p><?php echo $afficher1['date_creation_article'] ?></p>
+               <a href="voir_article.php?id_article=<?php echo $afficher1['id_article']; ?>">Voir l'article</a>
+            </div>
+            <?php }   ?>
+          </div>
+      </div>
      
      </section>
+     <hr>
 
-     <section class=" w-75 bg-white section2">
+     <section class=" w-75 bg- mb-5 p-5">
+     <p class="h2 mb-5">* Les derniers articles de la categorie ( cheuveux ) :</p>
+     <div class="container">
+          <div class="row ">
+          <?php  while ($afficher2=$select2->fetch()) {?>
+            <div class="col-md-3">
+              <div class="mb-2 ">
+                  <img class="imgimg" src="<?php echo $afficher2['immage_article'] ?>" alt="immage">
+              </div>                        
+               <p><?php echo $afficher2['titre_article'] ?></p>
+               <hr>
+               <p><?php echo $afficher2['date_creation_article'] ?></p>
+               <a href="voir_article.php?id_article=<?php echo $afficher2['id_article']; ?>">Voir l'article</a>
+            </div>
+            <?php }   ?>
+          </div>
+      </div>
 
      </section>
-     
+     <hr>
 
+     <section class=" w-75 bg-white mb-5 p-5 ">
+     <p class="h2 mb-5">* Les derniers articles de la categorie ( maquillage ) :</p>
+     <div class="container">
+          <div class="row ">
+          <?php  while ($afficher3=$select3->fetch()) {?>
+            <div class="col-md-3">
+              <div class="mb-2 ">
+                  <img class="imgimg" src="<?php echo $afficher3['immage_article'] ?>" alt="immage">
+              </div>                        
+               <p><?php echo $afficher3['titre_article'] ?></p>
+               <hr>
+               <p><?php echo $afficher3['date_creation_article'] ?></p>
+               <a href="voir_article.php?id_article=<?php echo $afficher3['id_article']; ?>">Voir l'article</a>
+            </div>
+            <?php }   ?>
+          </div>
+      </div>
+
+     </section>
      
 </main>
 <footer>

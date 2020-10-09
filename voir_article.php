@@ -14,17 +14,21 @@
     //     header('Location:accueil.php');
     //  }
      
-     if (isset($_POST['revenir']) and  $_SESSION['roleutilisateur']==1) {
-        header('Location:utilisateur.php');
-     }
-     if (isset($_POST['revenir']) and $_SESSION['roleutilisateur']==2) {
-        header('Location:administrateur.php');
-     }
+     
 
-    if(isset($_GET['id_article']) and isset($_GET['id_utilisateur']) and isset($_POST['envoyer']) ) {
+     
+        if (isset($_POST['revenir']) and  $_SESSION['roleutilisateur']==1) {
+            header('Location:utilisateur.php');
+         }
+         if (isset($_POST['revenir']) and $_SESSION['roleutilisateur']==2) {
+            header('Location:administrateur.php');
+         }
+     
+
+    if(isset($_GET['id_article']) and isset($_SESSION['idutilisateur']) and isset($_POST['envoyer']) ) {
        
         $inserercomment=$basevoirarticleblog->prepare("insert into commentaire(contenu_commentaire , id_article , id_utilisateur) values(?,?,?) ");
-        $assurer=$inserercomment->execute(array($_POST['commentaire'],$_GET['id_article'],$_GET['id_utilisateur']));
+        $assurer=$inserercomment->execute(array($_POST['commentaire'],$_GET['id_article'],$_SESSION['idutilisateur']));
         var_dump($assurer);
         echo " <br>";
     }
@@ -38,6 +42,14 @@
     echo " <br>";
 
     $afficher2=$affichercomment->fetch();
+
+
+    // $requette2 = $basevoirarticleblog->prepare(" select utilisateur.username_utilisateur, commentaire.contenu_commentaire ,commentaire.date_commentaire from utilisateur , commentaire, articles where  articles.id_article = commentaire.id_article and commentaire.id_utilisateur = utilisateur.id_utilisateur");
+    // $requette2->execute(array($_GET['id_article']));
+
+    $requette2 = $basevoirarticleblog->prepare("select utilisateur.username_utilisateur, commentaire.contenu_commentaire  ,commentaire.date_commentaire from utilisateur , commentaire, articles where commentaire.id_article = ?  and commentaire.id_utilisateur = utilisateur.id_utilisateur and articles.id_article = commentaire.id_article");
+    $requette2->execute(array($_GET['id_article']));
+   
 ?>
 
 <!DOCTYPE html>
@@ -91,15 +103,15 @@
               <!-- <i class="fa fa-thumbs-up fa-3x" aria-hidden="true"></i> -->
               
       
-        <?php   while($afficher2 = $affichercomment->fetch()) {  ?>
+        <?php   while($requette22 = $requette2->fetch()  ) {  ?>
          
              <div class="commentaire">
-             <?php   echo $_SESSION['username'] ?>
+             <?php   echo $requette22['username_utilisateur']  ?>
                 
-                <?php   echo $afficher2['date_commentaire'] ?>
+                <?php   echo $requette22['date_commentaire'] ?>
                
            
-           <?php   echo $afficher2['contenu_commentaire'] ?>
+           <?php   echo $requette22['contenu_commentaire'] ?>
 
              </div>
         <?php   }  ?>
