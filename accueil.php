@@ -97,7 +97,7 @@ $select3->execute(array());
                <?php    if (isset($_SESSION['idutilisateur'])) {  ?>
                 <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item avatar">
-        <a class="nav-link p-0" href="administrateur.php">
+        <a class="nav-link p-0" href=" <?php   if($_SESSION['roleutilisateur'] == 1) { echo "utilisateur.php"; }else { echo "administrateur.php"; }  ?>">
           <img name="image" src="   <?php echo     $_SESSION['immageutilisateur'] ?>" alt="immage" class="immageheader"
             alt="avatar image" height="35">
         </a>
