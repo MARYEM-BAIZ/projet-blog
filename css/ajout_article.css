@@ -3,12 +3,14 @@
     margin: 0;
     padding: 0;
 }
-header p {
-    text-align: center;
+header {
     background-color: #ea899a;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    color: gray;
+}
+.immageheader{
+    width: 100px;
+    height: 100px;
+    border: none;
+    border-radius: 70px;
 }
 body {
     background-color: rgb(239, 237, 238);
@@ -17,6 +19,17 @@ body {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
-    
    
+}
+footer {
+    background-color: #ea899a;
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+footer .article1 a {
+    color: gray;
+}
+footer .article2 p {
+    color: gray;
 }

@@ -86,16 +86,52 @@
     <link rel="stylesheet" type="text/css" href="css/inscrire.css">
 </head>
 <body>
+    <header>
+    <div class="pl-3 pt-3 pb-3">
+<a href="accueil.php"><img  class="immageheader" src="immages/logo-blog.png" alt="immage"></a>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+                <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link ml-3 mr-5 h5" href="accueil.php">Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link mr-5 dropdown-toggle h5" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Catégories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item h5" href="bien_etre.php">Bien etre </a>
+                        <a class="dropdown-item h5" href="cheuveux.php">Cheveux</a>
+                        <a class="dropdown-item h5" href="maquillage.php">Maquillage</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link h5" href="contact_us.php">Contact Us</a>
+                    </li>
+                    </ul>
+                    
+                </div>
+                </nav>
+
+    </header>
     
-    
-  <div class="container">
+ <main class="bg-white">  
+ 
+    <section class="  mb-5 p-5">
+    <div class="container">
       <div class="row">
-          <div class="col-6">
-          <img class="imgimg" src="immages/bg-blog.jpg" alt="immage">
-          </div>
-          <div class="col-6">
+         
+          <div class="col-12">
                <!-- Default form register -->
-<form class="text-center  p-5" action="#!" method="post"  enctype="multipart/form-data">
+<form class="text-center  " action="#!" method="post"  enctype="multipart/form-data">
 
 <p style=" color:  #ea899a" class="h2 mb-4">S'incrire</p>
 
@@ -109,17 +145,22 @@
 <input type="email" id="defaultRegisterFormEmail" name="email" class="form-control mb-4" placeholder="E-mail">
 
 <!-- Password -->
-<input type="password" id="defaultRegisterFormPassword" name="password" class="form-control" placeholder="Mot de passe" aria-describedby="defaultRegisterFormPasswordHelpBlock">
-<small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-    Au moins 8 charactéres et 1 numérique
-</small>
+<input type="password" id="defaultRegisterFormPassword" name="password" class="form-control mb-4" placeholder="Mot de passe" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+
  
-<input type="file" id="defaultRegisterFormAvatar" name="file" class="form-control mb-4" >
+<!-- <input type="file" id="defaultRegisterFormAvatar" name="file" class="form-control mb-4" > -->
 
-
+<div class="input-group">
+  
+  <div class="mb-4  custom-file">
+    <input type="file" name="file" class=" custom-file-input" id="inputGroupFile01"
+      aria-describedby="inputGroupFileAddon01">
+    <label class="custom-file-label" for="inputGroupFile01">Seléctionner une immage</label>
+  </div>
+</div>
 
 <!-- Sign up button -->
-<input style="color:gray " class="btn btn-info font-weight-bold my-4 h2 btn-block" name="inscrire" value="S'inscrire"  type="submit">
+<input style="color:gray " class="btn btn-info font-weight-bold my-4 h4 btn-block" name="inscrire" value="S'inscrire"  type="submit">
 
 
 </form>
@@ -127,8 +168,44 @@
           </div>
       </div>
   </div>
-   
+    </section>
 
+ </main>
+   
+ <footer>
+
+<div class="container">
+<div class="row">
+
+
+<div class="col-md-2 ">
+
+</div>
+
+  <div class="col-md-6 ">
+  <article class="article1 ">
+<a class=" h4"  href="contact_us.php">Contact Us </a>
+</article>
+  </div>
+
+  <div class="col-md-4 ">
+  <article class="article2">
+<p class="h4">Follow us </p>
+<div class="  ">
+<a href=""><i class="fa fa-instagram text-info fa-2x" aria-hidden="true"></i></a>
+<a href=""><i class="fa fa-facebook-square text-info fa-2x" aria-hidden="true"></i></a>
+<a href=""> <i class="fa fa-twitter-square text-info fa-2x" aria-hidden="true"></i></a>
+<a href=""><i class="fa fa-linkedin-square text-info fa-2x" aria-hidden="true"></i></a>
+</div>
+  </div>
+
+
+</div>
+</div>
+
+
+</article>
+</footer> 
      <script></script>
      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

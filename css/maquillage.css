@@ -15,12 +15,31 @@ body {
    
 }
 .imgheight {
-    height: 150px;
-    width: 100%;
-}
-.immageaffiche{
     display: block;
     margin-left: auto;
     margin-right: auto;
-   border: 2px solid gray ; 
+    height: 150px;
+    width: 150px;
+    border-radius: 70px;
+}
+header {
+    background-color: #ea899a;
+}
+.immageheader{
+    width: 100px;
+    height: 100px;
+    border: none;
+    border-radius: 70px;
+}
+footer {
+    background-color: #ea899a;
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+footer .article1 a {
+    color: gray;
+}
+footer .article2 p {
+    color: gray;
 }

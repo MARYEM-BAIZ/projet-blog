@@ -18,7 +18,9 @@ session_start();
 </head>
 <body>
     <header>
-    <p class="h5">Lorem, ipsum dolor.</p>
+    <div class="pl-3 pt-3 pb-3">
+<a href="accueil.php"><img  class="immageheader" src="immages/logo-blog.png" alt="immage"></a>
+</div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <!-- <a class="navbar-brand" href="#">Navbar</a> -->
@@ -30,32 +32,35 @@ session_start();
     <ul class="navbar-nav mr-auto">
      
       <li class="nav-item">
-        <a class="nav-link ml-3 mr-5" href="accueil.php">Accueil</a>
+        <a class="nav-link ml-3 h5 mr-5" href="accueil.php">Accueil</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link mr-5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link h5 mr-5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Espace Utilisateur 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="mes_articles.php">Mes articles</a>
-          <a class="dropdown-item" href="ajout_article.php">Ajouter un article</a>
+          <a class="dropdown-item h5" href="mes_articles.php">Mes articles</a>
+          <a class="dropdown-item h5" href="ajout_article.php">Ajouter un article</a>
           <!-- <a class="dropdown-item" href="deconnexion.php">Déconnexion</a> -->
         </div>
       </li>
      
       <li class="nav-item dropdown">
-        <a class="nav-link mr-5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link mr-5 h5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           profil
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="profil_utilisateur.php">Voir profil</a>
-          <a class="dropdown-item" href="deconnexion.php">Déconnexion</a>
+          <a class="dropdown-item h5" href="profil_utilisateur.php">Voir profil</a>
+          <a class="dropdown-item h5" href="deconnexion.php">Déconnexion</a>
         </div>
       </li>
     </ul>
     
   </div>
  <ul class="navbar-nav ml-auto nav-flex-icons">
+ <li class="nav-item">
+                     <p style="color:gray" class="mr-3 mt-4 h5"> <?php  echo $_SESSION['username'] ?> </p>
+                    </li>
       <li class="nav-item avatar">
         <a class="nav-link p-0" href="#">
           <img src="   <?php echo     $_SESSION['immageutilisateur'] ?>" alt="immage" class="immageheader"
@@ -89,25 +94,46 @@ session_start();
     </ul> -->
   
     </header>
-    <main>
-        <section>
+    <main class="bg-white">
+        <section class=" mt-5  mb-5 p-5">
            
         </section>
     </main>
+   
     <footer>
-    <article class="article1">
-    <a href="contact_us.php">Contact Us </a>
-    </article>
-    <article class="article2">
-    <p>Follow us </p>
-    <div class="div_article2_footer">
-    <a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
-    <a href=""><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-    <a href=""> <i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-    <a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-    </div>
-    </article>
-  </footer>
+
+<div class="container">
+<div class="row">
+
+
+<div class="col-md-2 ">
+
+</div>
+
+  <div class="col-md-6 ">
+  <article class="article1 ">
+<a class=" h4"  href="contact_us.php">Contact Us </a>
+</article>
+  </div>
+
+  <div class="col-md-4 ">
+  <article class="article2">
+<p class="h4">Follow us </p>
+<div class="  ">
+<a href=""><i class="fa fa-instagram text-info fa-2x" aria-hidden="true"></i></a>
+<a href=""><i class="fa fa-facebook-square text-info fa-2x" aria-hidden="true"></i></a>
+<a href=""> <i class="fa fa-twitter-square text-info fa-2x" aria-hidden="true"></i></a>
+<a href=""><i class="fa fa-linkedin-square text-info fa-2x" aria-hidden="true"></i></a>
+</div>
+  </div>
+
+
+</div>
+</div>
+
+
+</article>
+</footer> 
     <script> </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

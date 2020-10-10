@@ -26,7 +26,9 @@ try {
 </head>
 <body>
 <header>
-    <p class="h5">Lorem, ipsum dolor.</p>
+<div class="pl-3 pt-3 pb-3">
+<a href="accueil.php"><img  class="immageheader" src="immages/logo-blog.png" alt="immage"></a>
+</div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <!-- <a class="navbar-brand" href="#">Navbar</a> -->
@@ -38,28 +40,28 @@ try {
     <ul class="navbar-nav mr-auto">
      
       <li class="nav-item">
-        <a class="nav-link ml-3 mr-5" href="accueil.php">Accueil</a>
+        <a class="nav-link ml-3 h5 mr-5" href="accueil.php">Accueil</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link mr-5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link h5 mr-5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Espace Administrateur 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="liste_utilisateurs.php">Liste des utilisateurs</a>
-          <a class="dropdown-item" href="message_contact_us.php">Messages (Contact Us)</a>
-          <a class="dropdown-item" href="mes_articles_admin.php">Liste des articles</a>
-          <a class="dropdown-item" href="ajout_article.php">Ajouter un article</a>
+          <a class="dropdown-item h5" href="liste_utilisateurs.php">Liste des utilisateurs</a>
+          <a class="dropdown-item h5" href="message_contact_us.php">Messages (Contact Us)</a>
+          <a class="dropdown-item h5" href="mes_articles_admin.php">Liste des articles</a>
+          <a class="dropdown-item h5" href="ajout_article.php">Ajouter un article</a>
           <!-- <a class="dropdown-item" href="deconnexion.php">Déconnexion</a> -->
         </div>
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link mr-5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link mr-5 h5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           profil
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="profil_admin.php">Voir profil</a>
-          <a class="dropdown-item" href="deconnexion.php">Déconnexion</a>
+          <a class="dropdown-item h5" href="profil_admin.php">Voir profil</a>
+          <a class="dropdown-item h5" href="deconnexion.php">Déconnexion</a>
         </div>
       </li>
       
@@ -67,6 +69,9 @@ try {
     
   </div>
  <ul class="navbar-nav ml-auto nav-flex-icons">
+ <li class="nav-item">
+                     <p style="color:gray" class="mr-3 mt-4 h5"> <?php  echo $_SESSION['username'] ?> </p>
+                    </li>
       <li class="nav-item avatar">
         <a class="nav-link p-0" href="#">
         <!-- <p> je dois metre ici l'immage du admin</p> -->
@@ -104,53 +109,73 @@ try {
   
     </header>
 
-<main>
+<main class="bg-white">
 
 
-        <section>
-             <table>
+        <section class=" mt-5  mb-5 p-5">
+             <table class="w-100">
              <?php while ($afficher=$select->fetch()) {  ?>
            <tr>
-            <th>username</th>
-            <td> <?php echo $afficher['username_utilisateur'] ;  ?></td>
-            <td> <a href="modifier_profil.php?id=<?php echo $_SESSION['idutilisateur'] ?>&nom_utilisateur=<?php echo $afficher['username_utilisateur'] ?>&password_utilisateur=<?php echo $afficher['password_utilisateur'] ?>">modifier</a></td>
+            <th class=" border border-muted p-2">username</th>
+            <td class=" border border-muted p-2"> <?php echo $afficher['username_utilisateur'] ;  ?></td>
+            <td class=" border border-muted p-2"> <a href="modifier_profil.php?id=<?php echo $_SESSION['idutilisateur'] ?>&nom_utilisateur=<?php echo $afficher['username_utilisateur'] ?>&password_utilisateur=<?php echo $afficher['password_utilisateur'] ?>">modifier</a></td>
            </tr>
 
            <tr>
-             <th>email</th>
-             <td> <?php echo $afficher['email_utilisateur'] ;  ?></td>
+             <th class=" border border-muted p-2">email</th>
+             <td class=" border border-muted p-2"> <?php echo $afficher['email_utilisateur'] ;  ?></td>
            </tr>
 
            <tr>
-            <th>mot de passe</th>
-            <td> <?php echo $afficher['password_utilisateur'] ;  ?></td>
-            <td> <a href="modifier_profil.php?id=<?php echo $_SESSION['idutilisateur'] ?>&nom_utilisateur=<?php echo $afficher['username_utilisateur'] ?>&password_utilisateur=<?php echo $afficher['password_utilisateur'] ?>">modifier</a></td>
+            <th class=" border border-muted p-2">mot de passe</th>
+            <td class=" border border-muted p-2"> <?php echo $afficher['password_utilisateur'] ;  ?></td>
+            <td class=" border border-muted p-2"> <a href="modifier_profil.php?id=<?php echo $_SESSION['idutilisateur'] ?>&nom_utilisateur=<?php echo $afficher['username_utilisateur'] ?>&password_utilisateur=<?php echo $afficher['password_utilisateur'] ?>">modifier</a></td>
             </tr>
 
             <tr>
-            <th>photo de profil</th>
-            <td> <img src="<?php echo $afficher['avatar_utilisateur'] ;  ?>" alt="immage"></td>
-            <td> <a href="modifier_profil.php?id=<?php echo $_SESSION['idutilisateur'] ?>&nom_utilisateur=<?php echo $afficher['username_utilisateur'] ?>&password_utilisateur=<?php echo $afficher['password_utilisateur'] ?>">modifier</a></td>
+            <th class=" border border-muted p-2">photo de profil</th>
+            <td class=" border border-muted p-2"> <img style="width:150px ; height:150px ; border-radius: 70px ; border: none ; display:block ; margin-left:auto ;margin-right:auto  " src="<?php echo $afficher['avatar_utilisateur'] ;  ?>" alt="immage"></td>
+            <td class=" border border-muted p-2"> <a href="modifier_profil.php?id=<?php echo $_SESSION['idutilisateur'] ?>&nom_utilisateur=<?php echo $afficher['username_utilisateur'] ?>&password_utilisateur=<?php echo $afficher['password_utilisateur'] ?>">modifier</a></td>
            </tr>
 
            <?php }  ?>
              </table>
         </section>
     </main>
-<footer>
-    <article class="article1">
-    <a href="contact_us.php">Contact Us </a>
-    </article>
-    <article class="article2">
-    <p>Follow us </p>
-    <div class="div_article2_footer">
-    <a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
-    <a href=""><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-    <a href=""> <i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-    <a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-    </div>
-    </article>
-  </footer>
+    <footer>
+
+<div class="container">
+<div class="row">
+
+
+<div class="col-md-2 ">
+
+</div>
+
+  <div class="col-md-6 ">
+  <article class="article1 ">
+<a class=" h4"  href="contact_us.php">Contact Us </a>
+</article>
+  </div>
+
+  <div class="col-md-4 ">
+  <article class="article2">
+<p class="h4">Follow us </p>
+<div class="  ">
+<a href=""><i class="fa fa-instagram text-info fa-2x" aria-hidden="true"></i></a>
+<a href=""><i class="fa fa-facebook-square text-info fa-2x" aria-hidden="true"></i></a>
+<a href=""> <i class="fa fa-twitter-square text-info fa-2x" aria-hidden="true"></i></a>
+<a href=""><i class="fa fa-linkedin-square text-info fa-2x" aria-hidden="true"></i></a>
+</div>
+  </div>
+
+
+</div>
+</div>
+
+
+</article>
+</footer> 
 <script> </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

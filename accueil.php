@@ -96,6 +96,9 @@ $select3->execute(array());
                <?php  }  ?>
                <?php    if (isset($_SESSION['idutilisateur'])) {  ?>
                 <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item">
+                     <p style="color:gray" class="mr-3 mt-4 h5"> <?php  echo $_SESSION['username'] ?> </p>
+                    </li>
       <li class="nav-item avatar">
         <a class="nav-link p-0" href=" <?php   if($_SESSION['roleutilisateur'] == 1) { echo "utilisateur.php"; }else { echo "administrateur.php"; }  ?>">
           <img name="image" src="   <?php echo     $_SESSION['immageutilisateur'] ?>" alt="immage" class="immageheader"
@@ -116,13 +119,13 @@ $select3->execute(array());
        
   
     
-     <section class=" w-75 bg-white mb-5 p-5">
-       <p class="h2 mb-5">* Les derniers articles de la categorie ( bien etre ) :</p>
+     <section class=" mb-2 p-5 ">
+       <p class="h2 mb-5 text-muted ">* Les derniers articles de la categorie ( bien etre ) :</p>
       <div class="container">
           <div class="row">
           <?php  while ($afficher1=$select1->fetch()) {?>
             <div class="col-md-3">
-              <div class="mb-2   ">
+              <div class="mb-4   ">
                   <img class="imgimg" src="<?php echo $afficher1['immage_article'] ?>" alt="immage">
               </div>                        
                <p><?php echo $afficher1['titre_article'] ?></p>
@@ -137,13 +140,13 @@ $select3->execute(array());
      </section>
      <hr>
 
-     <section class=" w-75 bg- mb-5 p-5">
-     <p class="h2 mb-5">* Les derniers articles de la categorie ( cheuveux ) :</p>
+     <section class=" mb-2 p-5 ">
+     <p class="h2 mb-5 text-muted ">* Les derniers articles de la categorie ( cheuveux ) :</p>
      <div class="container">
           <div class="row ">
           <?php  while ($afficher2=$select2->fetch()) {?>
             <div class="col-md-3">
-              <div class="mb-2 ">
+              <div class="mb-4 ">
                   <img class="imgimg" src="<?php echo $afficher2['immage_article'] ?>" alt="immage">
               </div>                        
                <p><?php echo $afficher2['titre_article'] ?></p>
@@ -158,13 +161,13 @@ $select3->execute(array());
      </section>
      <hr>
 
-     <section class=" w-75 bg-white mb-5 p-5 ">
+     <section class="  mb-5 p-5 text-muted ">
      <p class="h2 mb-5">* Les derniers articles de la categorie ( maquillage ) :</p>
      <div class="container">
           <div class="row ">
           <?php  while ($afficher3=$select3->fetch()) {?>
             <div class="col-md-3">
-              <div class="mb-2 ">
+              <div class="mb-4 ">
                   <img class="imgimg" src="<?php echo $afficher3['immage_article'] ?>" alt="immage">
               </div>                        
                <p><?php echo $afficher3['titre_article'] ?></p>
@@ -191,18 +194,18 @@ $select3->execute(array());
       
         <div class="col-md-6 ">
         <article class="article1 ">
-    <a class=" h2"  href="contact_us.php">Contact Us </a>
+    <a class=" h4"  href="contact_us.php">Contact Us </a>
     </article>
         </div>
 
         <div class="col-md-4 ">
         <article class="article2">
-    <p class="h2">Follow us </p>
+    <p class="h4">Follow us </p>
     <div class="  ">
-    <a href=""><i class="fa fa-instagram text-info fa-3x" aria-hidden="true"></i></a>
-    <a href=""><i class="fa fa-facebook-square text-info fa-3x" aria-hidden="true"></i></a>
-   <a href=""> <i class="fa fa-twitter-square text-info fa-3x" aria-hidden="true"></i></a>
-    <a href=""><i class="fa fa-linkedin-square text-info fa-3x" aria-hidden="true"></i></a>
+    <a href=""><i class="fa fa-instagram text-info fa-2x" aria-hidden="true"></i></a>
+    <a href=""><i class="fa fa-facebook-square text-info fa-2x" aria-hidden="true"></i></a>
+   <a href=""> <i class="fa fa-twitter-square text-info fa-2x" aria-hidden="true"></i></a>
+    <a href=""><i class="fa fa-linkedin-square text-info fa-2x" aria-hidden="true"></i></a>
     </div>
         </div>
 
