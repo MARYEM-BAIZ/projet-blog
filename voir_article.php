@@ -170,11 +170,11 @@
               <button name="liker" type="button" style="border:none ; background-color:white"><i class="fa fa-thumbs-up fa-3x " aria-hidden="true"></i> </button>
               </div> -->
               <br><br>
-              <p style="text-align:center"> <?php echo $afficher333['date_creation_article'] ?>   </p>
+              <p >Date de publication : <?php echo $afficher333['date_creation_article'] ?>   </p>
               <hr>
-              <p style="text-align:center"> <?php echo $afficher333['titre_article'] ?></p>
+              <p ><strong>titre :</strong> <?php echo $afficher333['titre_article'] ?></p>
               <hr>
-              <p style="text-align:center" > <?php echo $afficher333['contenu_article'] ?></p>
+              <p  > <?php echo $afficher333['contenu_article'] ?></p>
        
          </div>
     <?php   } ?>

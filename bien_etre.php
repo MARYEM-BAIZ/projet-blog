@@ -11,8 +11,8 @@
       //  echo "je doit changer date_parution_articles "
          $afficher3=$basebienetreblog->prepare('select * from articles where   id_categorie=1  ');
          $afficher33=$afficher3->execute();
-          var_dump($afficher33);
-          echo " <br>";
+        //   var_dump($afficher33);
+        //   echo " <br>";
          ?>
 <!DOCTYPE html>
 <html lang="en">

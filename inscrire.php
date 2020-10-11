@@ -6,17 +6,22 @@
      } catch (exception $e) {
          echo " la connexion a échoué " ." <br>";
      }   
-
+    
        
         if(isset($_POST['inscrire'])){
-            $username=htmlspecialchars($_POST['username']);
+            
+    header('Location:inscrire.php');
             $username=strip_tags($_POST['username']);
+            $username=htmlspecialchars($_POST['username']);
+          
 
-            $email=htmlspecialchars($_POST['email']);
             $email=strip_tags($_POST['email']);
+            $email=htmlspecialchars($_POST['email']);
+            
 
-            $password=htmlspecialchars($_POST['password']);
             $password=strip_tags($_POST['password']);
+            $password=htmlspecialchars($_POST['password']);
+            
 
         
 
@@ -75,7 +80,6 @@
     // $role1=$role->execute(array());
     //  var_dump($role1);
     //  echo "  <br> ";
-
      
 ?>
 <!DOCTYPE html>

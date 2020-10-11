@@ -15,18 +15,18 @@
                                                     //  echo "je doit changer date_parution_articles "
       $afficher1=$basemesarticlesblog->prepare('select * from articles where id_utilisateur=? and  id_categorie=1  ');
       $afficher11=$afficher1->execute(array($_SESSION['idutilisateur']));
-      var_dump($afficher11);
-      echo " <br>";
+      // var_dump($afficher11);
+      // echo " <br>";
                                                   //  echo "je doit changer date_parution_articles "
       $afficher2=$basemesarticlesblog->prepare('select * from articles where id_utilisateur=? and  id_categorie=2   ');
       $afficher22=$afficher2->execute(array($_SESSION['idutilisateur']));
-      var_dump($afficher22);
-      echo " <br>";
+      // var_dump($afficher22);
+      // echo " <br>";
                             //  echo "je doit changer date_parution_articles "
       $afficher3=$basemesarticlesblog->prepare('select * from articles where id_utilisateur=? and  id_categorie=3  ');
       $afficher33=$afficher3->execute(array($_SESSION['idutilisateur']));
-      var_dump($afficher33);
-      echo " <br>";
+      // var_dump($afficher33);
+      // echo " <br>";
 
 
 
@@ -36,7 +36,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes Articles</title>
+    <title>Articles Utilisateur</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/mes_articles.css">

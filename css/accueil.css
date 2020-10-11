@@ -55,3 +55,10 @@ footer .article2 p {
     color: #00a3ad ;
 } */
 
+@media screen and (min-width: 320px) and (max-width: 480px){
+    main{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

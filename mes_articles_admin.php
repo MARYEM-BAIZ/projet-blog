@@ -15,18 +15,18 @@
                                                    //  echo "je doit changer date_parution_articles "
      $afficher1=$basemesarticlesblog->prepare('select * from articles where   id_categorie=1  ');
      $afficher11=$afficher1->execute(array());
-     var_dump($afficher11);
-     echo " <br>";
+    //  var_dump($afficher11);
+    //  echo " <br>";
                                                  //  echo "je doit changer date_parution_articles "
      $afficher2=$basemesarticlesblog->prepare('select * from articles where  id_categorie=2   ');
      $afficher22=$afficher2->execute(array());
-     var_dump($afficher22);
-     echo " <br>";
+    //  var_dump($afficher22);
+    //  echo " <br>";
                            //  echo "je doit changer date_parution_articles "
      $afficher3=$basemesarticlesblog->prepare('select * from articles where  id_categorie=3  ');
      $afficher33=$afficher3->execute(array());
-     var_dump($afficher33);
-     echo " <br>";
+    //  var_dump($afficher33);
+    //  echo " <br>";
 
       //  echo "partie suppression des articles"
 

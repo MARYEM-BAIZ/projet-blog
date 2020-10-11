@@ -15,10 +15,10 @@ session_start();
           $password=strip_tags($_POST['password']);
           $password=htmlspecialchars($_POST['password']);
 
-          echo "<pre>";
-          print_r($_FILES['immageprofil']);
-          echo "  </pre> ";
-          echo "  <br> ";
+          // echo "<pre>";
+          // print_r($_FILES['immageprofil']);
+          // echo "  </pre> ";
+          // echo "  <br> ";
 
 
           if (isset($_FILES['immageprofil']) and $_FILES['immageprofil']['error']==0 ) {
@@ -29,10 +29,10 @@ session_start();
              $liste_extensions_acceptables=array('png',"jpg");
              $resultat=in_array($extension,$liste_extensions_acceptables);
  
-             echo "<pre>";
-             print_r($details);
-             echo "  </pre> ";
-             echo "  <br> ";
+            //  echo "<pre>";
+            //  print_r($details);
+            //  echo "  </pre> ";
+            //  echo "  <br> ";
    
                        if ($resultat == true) {
                            move_uploaded_file($_FILES['immageprofil']['tmp_name'] , "immages/" .$details['basename']);
@@ -64,7 +64,7 @@ session_start();
        
  
        
-        var_dump($modifiertitre1);
+        // var_dump($modifiertitre1);
 
 
 
@@ -89,7 +89,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page utilisateur</title>
+    <title>Modification du profil</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   

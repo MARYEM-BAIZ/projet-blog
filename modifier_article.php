@@ -14,10 +14,10 @@
        $contenu=htmlspecialchars($_POST['contenu_article']);
 
        
-       echo "<pre>";
-       print_r($_FILES['immage_article']);
-       echo "  </pre> ";
-       echo "  <br> ";
+      //  echo "<pre>";
+      //  print_r($_FILES['immage_article']);
+      //  echo "  </pre> ";
+      //  echo "  <br> ";
      
           
        if (isset($_FILES['immage_article']) and $_FILES['immage_article']['error']==0 ) {
@@ -28,10 +28,10 @@
             $liste_extensions_acceptables=array('png',"jpg");
             $resultat=in_array($extension,$liste_extensions_acceptables);
 
-            echo "<pre>";
-            print_r($details);
-            echo "  </pre> ";
-            echo "  <br> ";
+            // echo "<pre>";
+            // print_r($details);
+            // echo "  </pre> ";
+            // echo "  <br> ";
   
                       if ($resultat == true) {
                           move_uploaded_file($_FILES['immage_article']['tmp_name'] , "immages/" .$details['basename']);
@@ -211,7 +211,7 @@ elseif ($_SESSION['roleutilisateur']==2) { ?>
    <main class="bg-white"> 
     
      <section class=" mt-5  mb-5 p-5">
-     <p class="h1 mb-4"> Modufication du article </p>
+     <p class="h1 mb-4 text-muted"> Modufication du article </p>
       <form class="text-center   " action="#" method="post" enctype="multipart/form-data">
          <input class="form-control mb-4" type="text" name="titre_article" value=" <?php echo $_GET['titre_article']  ?>">
    
@@ -231,7 +231,7 @@ elseif ($_SESSION['roleutilisateur']==2) { ?>
 </div>
          
 
-         <button class="btn btn-info btn-block" name="modifier" type="submit">Modifier</button>
+         <button class="btn btn-info text-muted btn-block" name="modifier" type="submit">Modifier</button>
       </form>
      </section>
 

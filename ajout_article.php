@@ -17,10 +17,10 @@ session_start();
           
 
            
-          echo "<pre>";
-          print_r($_FILES['file']);
-          echo "  </pre> ";
-          echo "  <br> ";
+          // echo "<pre>";
+          // print_r($_FILES['file']);
+          // echo "  </pre> ";
+          // echo "  <br> ";
          
         
 
@@ -29,10 +29,10 @@ session_start();
                   
                   $details=pathinfo($_FILES['file']['name']);
 
-          echo "<pre>";
-          print_r($details);
-          echo "  </pre> ";
-          echo "  <br> ";
+          // echo "<pre>";
+          // print_r($details);
+          // echo "  </pre> ";
+          // echo "  <br> ";
                   $extension=$details['extension'];
                   $liste_extensions_acceptable=array('png','jpg');
                   $resultat=in_array($extension,$liste_extensions_acceptable);
@@ -45,8 +45,8 @@ session_start();
                
                    $inserer=$base1blog->prepare(' insert into articles(titre_article,contenu_article,immage_article,id_categorie,id_utilisateur) values(?,?,?,?,?)');
                    $inserer1=$inserer->execute(array($_POST['titrearticle'],$_POST['contenuarticle'],$chemain ,$_POST['select'],$_SESSION['idutilisateur'] ));
-                   var_dump($inserer1);
-                   echo "  <br> ";
+                  //  var_dump($inserer1);
+                  //  echo "  <br> ";
                    
                      
               }
@@ -70,8 +70,8 @@ session_start();
    
        $categorie=$base1blog->prepare('select * from categories');
        $categorie1=$categorie->execute(array());
-        var_dump($categorie1);
-        echo "  <br> ";
+        // var_dump($categorie1);
+        // echo "  <br> ";
 
 
   ?>

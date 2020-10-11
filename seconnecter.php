@@ -11,6 +11,7 @@ session_start();
             $password="";
             $email="";
            if (isset($_POST['seconnecter']) ) {
+            header('Location:seconnecter.php');
              $password=strip_tags($_POST['password']);
                $password=htmlspecialchars($_POST['password']);
               
