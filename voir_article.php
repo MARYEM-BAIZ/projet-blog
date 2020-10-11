@@ -28,8 +28,8 @@
        
         $inserercomment=$basevoirarticleblog->prepare("insert into commentaire(contenu_commentaire , id_article , id_utilisateur) values(?,?,?) ");
         $assurer=$inserercomment->execute(array($_POST['commentaire'],$_GET['id_article'],$_SESSION['idutilisateur']));
-        var_dump($assurer);
-        echo " <br>";
+        // var_dump($assurer);
+        // echo " <br>";
     }
 
      $done=$basevoirarticleblog->prepare(' select * from articles where id_article =?');
@@ -49,6 +49,25 @@
     $requette2 = $basevoirarticleblog->prepare("select utilisateur.username_utilisateur, commentaire.contenu_commentaire  ,commentaire.date_commentaire from utilisateur , commentaire, articles where commentaire.id_article = ?  and commentaire.id_utilisateur = utilisateur.id_utilisateur and articles.id_article = commentaire.id_article");
     $requette2->execute(array($_GET['id_article']));
    
+    
+        if (isset($_POST['liker']) and isset($_SESSION['idutilisateur']) and isset($_GET['id_article']) ) {
+          
+          $liker=$basevoirarticleblog->prepare(' insert into likes(id_article) values(?)');
+          $liker1=$liker->execute(array($_GET['id_article']));
+        
+         
+          // var_dump($liker1);
+        }
+        
+
+        $requette = $basevoirarticleblog->prepare("SELECT count(id_like) as nbr_like FROM likes where id_article= ? "); 
+        $requette ->execute(array($_GET['id_article'])) ;
+        $re=$requette->fetch();
+
+        $requette3=$basevoirarticleblog->prepare( ' SELECT count(id_commentaire) as nbr_commentaire from commentaire where id_article= ?');
+        $req=$requette3->execute(array($_GET['id_article']));
+        $requet=$requette3->fetch();
+      // var_dump($re);
 ?>
 
 <!DOCTYPE html>
@@ -142,11 +161,20 @@
               <div class="mb-4">
                   <img style="width: 100% ; height:250px ;border: none ; display:block ; margin-left:auto ;margin-right:auto  "  src="<?php echo $afficher333['immage_article'] ?>" alt="immage">
               </div>
-              <p> <?php echo $afficher333['date_creation_article'] ?> </p>
+              <p class="pull-right mt-3 mr-4"> <?php   echo $re['nbr_like'] ." likes";     ?></p>
+              <form class="pull-right mr-2" action="#" method="post">
+                <!-- <input type="submit" name="liker" value="liker"> -->
+                <button style="border:none ; background-color:white" type="submit" name="liker" ><i class="fa fa-thumbs-up fa-3x " aria-hidden="true"></i></button>
+              </form>
+              <!-- <div class="pull-right mr-4">
+              <button name="liker" type="button" style="border:none ; background-color:white"><i class="fa fa-thumbs-up fa-3x " aria-hidden="true"></i> </button>
+              </div> -->
+              <br><br>
+              <p style="text-align:center"> <?php echo $afficher333['date_creation_article'] ?>   </p>
               <hr>
-              <p> <?php echo $afficher333['titre_article'] ?></p>
+              <p style="text-align:center"> <?php echo $afficher333['titre_article'] ?></p>
               <hr>
-              <p> <?php echo $afficher333['contenu_article'] ?></p>
+              <p style="text-align:center" > <?php echo $afficher333['contenu_article'] ?></p>
        
          </div>
     <?php   } ?>
@@ -154,25 +182,26 @@
 
 </section>
     <section class="  mb-5 px-5 pb-5">
-        
+        <p class="h4 text-muted">Commentaires : ( <?php  echo $requet['nbr_commentaire'] ." )";     ?></p>
     <form action="#" method="post">
     <textarea style="display:block" name="commentaire" class="ckeditor p-3 "  cols="15" rows="5"></textarea>
     <input class="btn btn-info text-muted my-4" type="submit" name="envoyer" value="Commenter">
     <!-- <input type="submit" name="envoyer" valeur="envoyer"> -->
     </form>
-              <!-- <i class="fa fa-thumbs-up fa-3x" aria-hidden="true"></i> -->
+           
               
       
       <div class="mt-3 ">
       <?php   while($requette22 = $requette2->fetch()  ) {  ?>
          
          <div class="commentaire">
-         <?php   echo $requette22['username_utilisateur']  ?>
+        <h5> <small><?php   echo $requette22['username_utilisateur']  ?></small></h5>
             
-            <?php   echo $requette22['date_commentaire'] ?>
+            <h6><small>(<?php   echo $requette22['date_commentaire'] ?>)</small></h6>
            
        
-       <?php   echo $requette22['contenu_commentaire'] ?>
+       <p ><strong><?php   echo $requette22['contenu_commentaire'] ?></strong></p>
+       <hr>
 
          </div>
     <?php   }  ?>
