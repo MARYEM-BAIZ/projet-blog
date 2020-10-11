@@ -143,7 +143,9 @@
                   <img style="width: 100% ; height:250px ;border: none ; display:block ; margin-left:auto ;margin-right:auto  "  src="<?php echo $afficher333['immage_article'] ?>" alt="immage">
               </div>
               <p> <?php echo $afficher333['date_creation_article'] ?> </p>
+              <hr>
               <p> <?php echo $afficher333['titre_article'] ?></p>
+              <hr>
               <p> <?php echo $afficher333['contenu_article'] ?></p>
        
          </div>
@@ -154,8 +156,9 @@
     <section class="  mb-5 px-5 pb-5">
         
     <form action="#" method="post">
-    <textarea name="commentaire" class="ckeditor p-3 "  cols="15" rows="5"></textarea>
-    <input type="submit" name="envoyer" valeur="envoyer">
+    <textarea style="display:block" name="commentaire" class="ckeditor p-3 "  cols="15" rows="5"></textarea>
+    <input class="btn btn-info text-muted my-4" type="submit" name="envoyer" value="Commenter">
+    <!-- <input type="submit" name="envoyer" valeur="envoyer"> -->
     </form>
               <!-- <i class="fa fa-thumbs-up fa-3x" aria-hidden="true"></i> -->
               

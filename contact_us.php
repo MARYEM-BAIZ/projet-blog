@@ -145,8 +145,7 @@ try {
 <button name="envoyer" class="btn btn-info text-muted btn-block" type="submit">envoyer</button>
 
 </form>
-  <p> <?php  echo $_SESSION['emailutilisateur'];?></p>
-  <p> <?php  echo $_SESSION['username'];?></p>
+  
 <!-- Default form contact -->
              </div>
          </div>

@@ -8,8 +8,8 @@ session_start();
            }
 
 
-           $password="";
-           $email="";
+            $password="";
+            $email="";
            if (isset($_POST['seconnecter']) ) {
              $password=strip_tags($_POST['password']);
                $password=htmlspecialchars($_POST['password']);
@@ -23,9 +23,9 @@ session_start();
                $verif->execute(array($email, $password));
             //    var_dump($verif->rowCount()) ; 
                $ligne = $verif->fetch(); 
-               echo "<pre>";
-                var_dump($ligne);
-                echo "</pre>";
+              //  echo "<pre>";
+              //   var_dump($ligne);
+              //   echo "</pre>";
              if(isset($ligne['email_utilisateur']))
              {
                    if($ligne['id_role']== 1) {
@@ -49,9 +49,9 @@ session_start();
                     header('Location:administrateur.php'); 
                    }
              }
-             else {
-                 echo "connexion echouée"; 
-             }
+            //  else {
+            //      echo "connexion echouée"; 
+            //  }
 
             //     while ($ver=$verif->fetch()) {
             //         if ( $ver['password_utilisateur'] == $password and  $ver['email_utilisateur'] ==  $email and $ver['id_role'] ) {
@@ -104,8 +104,8 @@ session_start();
             
              $role=$base2blog->prepare('select * from role');
      $role1=$role->execute(array());
-     var_dump($role1);
-      echo "  <br> ";
+    //  var_dump($role1);
+    //   echo "  <br> ";
 
 ?>
 

@@ -9,9 +9,6 @@
 
        
         if(isset($_POST['inscrire'])){
-             $username="";
-        $email="";
-        $password="";
             $username=htmlspecialchars($_POST['username']);
             $username=strip_tags($_POST['username']);
 
@@ -23,10 +20,10 @@
 
         
 
-          echo "<pre>";
-         print_r($_FILES['file']);
-         echo "  </pre> ";
-         echo "  <br> ";
+        //   echo "<pre>";
+        //  print_r($_FILES['file']);
+        //  echo "  </pre> ";
+        //  echo "  <br> ";
        
 
         if ( isset($_FILES['file']) and $_FILES['file']['error']== 0 ) {
@@ -39,10 +36,10 @@
                     $resultat=in_array($extension,$liste_extensions_acceptables);
 
                      
-          echo "<pre>";
-          print_r($details);
-          echo "  </pre> ";
-          echo "  <br> ";
+        //   echo "<pre>";
+        //   print_r($details);
+        //   echo "  </pre> ";
+        //   echo "  <br> ";
 
                     if ($resultat == true) {
                         move_uploaded_file($_FILES['file']['tmp_name'] , "immages/" .$details['basename']);
@@ -51,18 +48,24 @@
                             // $_SESSION['immageutilisateur'] = $chemain;
                 $inserer=$baseblog->prepare(' insert into utilisateur(username_utilisateur,email_utilisateur,password_utilisateur,avatar_utilisateur,id_role) values(?,?,?,?,?) ');
                 $inserer1=$inserer->execute(array($_POST['username'],$_POST['email'],$_POST['password'],$chemain,1));
-                var_dump($inserer1);
-                echo "  <br> ";
+                // var_dump($inserer1);
+                // echo "  <br> ";
               }
               header('Location:seconnecter.php');
         }
-       
+        else {
+            $avatar="immages/immage-avatar.jpg";
+            $inserer=$baseblog->prepare(' insert into utilisateur(username_utilisateur,email_utilisateur,password_utilisateur,avatar_utilisateur,id_role) values(?,?,?,?,?) ');
+                $inserer1=$inserer->execute(array($_POST['username'],$_POST['email'],$_POST['password'],$avatar,1));
+                 
+        }
+        // header('Location:seconnecter.php');
     }
 
     $id=$baseblog->prepare(' select * from utilisateur');
     $id1=$id->execute(array());
-    var_dump($id1);
-    echo "  <br> ";
+    // var_dump($id1);
+    // echo "  <br> ";
     $getid=$id->fetch();
 
         $yeahid=$getid['id_utilisateur'];
