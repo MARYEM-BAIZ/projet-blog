@@ -13,6 +13,17 @@
          $afficher33=$afficher3->execute();
         //   var_dump($afficher33);
         //   echo " <br>";
+
+        if (isset($_POST['chercher1'])  ) {
+            $mot=strip_tags($_POST['chercher']);
+            $mot=htmlspecialchars($_POST['chercher']);
+
+
+            $cherche=$basebienetreblog->prepare('select * from articles where titre_article like ? ');
+            $cherche->execute(array("%".$_POST['chercher']."%"));
+
+       //  var_dump($che);
+     }
          ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,8 +64,14 @@
                         <a class="dropdown-item h5" href="maquillage.php">Maquillage</a>
                         </div>
                     </li>
+                   
                     <li class="nav-item">
-                        <a class="nav-link h5" href="contact_us.php">Contact Us</a>
+                        <form action="#" method="post">
+                          <input style="border-color:gray border-radius:3px "    class="ml-5  p-2 h5 " type="text" name="chercher" placeholder="Chercher">
+                          <button style="border:none" name="chercher1" type="submit" class="text-muted mt-2 ml-3 "  >
+                        <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+                        </button>
+                        </form>
                     </li>
                     </ul>
                     
@@ -96,7 +113,9 @@
 
     </header>
 <main class="bg-white">
-<section class="  mb-5 p-5">
+
+<?php      if (!isset($_POST['chercher1'])) {  ?>
+    <section class="  mb-5 p-5">
     <p  class="h1 mb-5 text-muted">Bien Etre</p>
     
      <div class="container">
@@ -120,6 +139,31 @@
      </div>
     
     </section>
+
+    <?php     } else {  ?>
+     
+    <section class=" mb-5 p-5 ">
+                   <p class="h2 mb-5 text-muted ">* Les  articles (résultat du recherche) :</p>
+                  <div class="container">
+                      <div class="row">
+                      <?php  while ($chercher1=$cherche->fetch()) {?>
+                        <div class="col-md-3">
+                          <div class="mb-4   ">
+                              <img  style=" display: block; margin-left: auto;  margin-right: auto; width: 150px; height: 150px; border: none; border-radius: 70px;" src="<?php echo $chercher1['immage_article'] ?>" alt="immage">
+                          </div>                        
+                           <p><strong><?php echo $chercher1['titre_article'] ?></strong></p>
+                           <hr>
+                           <p><?php echo $chercher1['date_creation_article'] ?></p>
+                           <a href="voir_article.php?id_article=<?php echo $chercher1['id_article']; ?>">Voir l'article</a>
+                        </div>
+                      <?php }   ?>
+                      </div>
+                  </div>
+                 
+                 </section>
+
+                 <?php    }   ?>
+
 </main>
 <footer>
 

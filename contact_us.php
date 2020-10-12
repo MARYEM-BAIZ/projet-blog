@@ -8,6 +8,7 @@ try {
 }   
       
     if (isset($_POST['envoyer'])) {
+      
         
         $nom=strip_tags($_POST['nomutilisateur']);
         $nom=htmlspecialchars($_POST['nomutilisateur']);
@@ -22,8 +23,8 @@ try {
             $inserer=$baseadminblog->prepare(' insert into contacter_admin(nom_utilisateur,email_utilisateur,contenu_contact) values(?,?,?) ');
             $inserer1=$inserer->execute(array($_POST['nomutilisateur'],$_POST['email'],$_POST['message']));
            
-            var_dump($inserer1);
-            echo" <br>";   
+            // var_dump($inserer1);
+            // echo" <br>";   
          }
         
     }

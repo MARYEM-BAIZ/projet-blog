@@ -26,7 +26,7 @@ $select2->execute(array());
 $select3=$base1blog->prepare('select * from articles where id_categorie=3 order by id_article desc limit 4');
 $select3->execute(array());
                
-          if (isset($_POST['chercher1'])) {
+          if (isset($_POST['chercher1']) ) {
                  $mot=strip_tags($_POST['chercher']);
                  $mot=htmlspecialchars($_POST['chercher']);
 
@@ -207,7 +207,7 @@ $select3->execute(array());
                  <?php     } else {  ?>
                     
                   <section class=" mb-5 p-5 ">
-                   <p class="h2 mb-5 text-muted ">* Les  articles :</p>
+                   <p class="h2 mb-5 text-muted ">* Les  articles (résultat du recherche) :</p>
                   <div class="container">
                       <div class="row">
                       <?php  while ($chercher1=$cherche->fetch()) {?>
