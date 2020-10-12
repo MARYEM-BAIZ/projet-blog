@@ -28,7 +28,7 @@
 <body>
 <header>
 <div class="pl-3 pt-3 pb-3">
-<a href="accueil.php"><img  class="immageheader" src="immages/logo-blog.png" alt="immage"></a>
+<a href="accueil.php"><img  class="immageheader1" src="immages/logo-blog.png" alt="immage"></a>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">

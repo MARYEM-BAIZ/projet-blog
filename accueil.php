@@ -44,7 +44,7 @@ $select3->execute(array());
 <header >  
 
 <div class="pl-3 pt-3 pb-3">
-<a href="accueil.php"><img  class="immageheader" src="immages/logo-blog.png" alt="immage"></a>
+<a href="accueil.php"><img  class="immageheader1" src="immages/logo-blog.png" alt="immage"></a>
 </div>
         
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
@@ -81,17 +81,14 @@ $select3->execute(array());
            
             <?php    if (!isset($_SESSION['idutilisateur'])) {  ?>
                <div class="">
-               <form class="" action="seconnecter.php" method="post">
+              
        <!-- <button type="button" name="seconnecter" class="btn btn-primary ">Se connecter</button> -->
-       <input type="submit" name="seconnecter" value="Se Connecter" class="btn mr-4 text-muted font-weight-bold  btn-outline-info h4 ">
-       </form>
+       <a href="seconnecter.php" class="btn mr-4 text-muted font-weight-bold  btn-outline-info h4 ">se connecter</a>
+  
                </div>
 
                <div class="">
-               <form class=" " action="inscrire.php" method="post" enctype="multipart/form-data">
-       <!-- <button type="button" name="inscrire" class="btn btn-primary ">S'inscrire</button> -->
-        <input type="submit" class=" btn mr-4 text-muted font-weight-bold btn-outline-info h4 " name="inscrire" value="S'inscrire" >
-       </form>
+               <a href="inscrire.php" class="btn mr-4 text-muted font-weight-bold  btn-outline-info h4 ">S'inscrire</a>
                </div>
                <?php  }  ?>
                <?php    if (isset($_SESSION['idutilisateur'])) {  ?>
@@ -100,7 +97,7 @@ $select3->execute(array());
                      <p style="color:gray" class="mr-3 mt-4 h5"> <?php  echo $_SESSION['username'] ?> </p>
                     </li>
       <li class="nav-item avatar">
-        <a class="nav-link p-0" href=" <?php   if($_SESSION['roleutilisateur'] == 1) { echo "utilisateur.php"; }else { echo "administrateur.php"; }  ?>">
+        <a class="nav-link p-0" href=" <?php   if($_SESSION['roleutilisateur'] == 1) { echo "profil_utilisateur.php"; }else { echo "profil_admin.php"; }  ?>">
           <img name="image" src="   <?php echo     $_SESSION['immageutilisateur'] ?>" alt="immage" class="immageheader"
             alt="avatar image" height="35">
         </a>

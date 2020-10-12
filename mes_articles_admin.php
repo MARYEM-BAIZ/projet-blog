@@ -99,7 +99,7 @@
         <!-- <p> je dois metre ici l'immage du admin</p> -->
            <!-- <p> je dois metre ici l'immage du admin</p> -->
               <!-- <p> je dois metre ici l'immage du admin</p> -->
-          <img src="   <?php echo  $_SESSION['immageutilisateur'] ?>" alt="immage" class="immageheader"
+          <img style=" width: 60px; height: 60px; border: none; border-radius: 70px;" src="   <?php echo  $_SESSION['immageutilisateur'] ?>" alt="immage"
             alt="avatar image" height="35">
         </a>
       </li>

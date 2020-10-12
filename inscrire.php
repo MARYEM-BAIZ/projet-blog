@@ -10,7 +10,7 @@
        
         if(isset($_POST['inscrire'])){
             
-    header('Location:inscrire.php');
+    // header('Location:inscrire.php');
             $username=strip_tags($_POST['username']);
             $username=htmlspecialchars($_POST['username']);
           
@@ -62,7 +62,7 @@
             $avatar="immages/immage-avatar.jpg";
             $inserer=$baseblog->prepare(' insert into utilisateur(username_utilisateur,email_utilisateur,password_utilisateur,avatar_utilisateur,id_role) values(?,?,?,?,?) ');
                 $inserer1=$inserer->execute(array($_POST['username'],$_POST['email'],$_POST['password'],$avatar,1));
-                 
+                header('Location:seconnecter.php');
         }
         // header('Location:seconnecter.php');
     }

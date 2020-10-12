@@ -11,7 +11,7 @@ session_start();
             $password="";
             $email="";
            if (isset($_POST['seconnecter']) ) {
-            header('Location:seconnecter.php');
+            // header('Location:seconnecter.php');
              $password=strip_tags($_POST['password']);
                $password=htmlspecialchars($_POST['password']);
               
@@ -37,7 +37,7 @@ session_start();
                        $_SESSION['emailutilisateur'] = $ligne['email_utilisateur']; 
                       
 
-                    header('Location:utilisateur.php'); 
+                    header('Location:profil_utilisateur.php'); 
                    }
                    else {
                     $_SESSION['username'] = $ligne['username_utilisateur']; 
@@ -47,7 +47,7 @@ session_start();
                     $_SESSION['emailutilisateur'] = $ligne['email_utilisateur'];  
                  
 
-                    header('Location:administrateur.php'); 
+                    header('Location:profil_admin.php'); 
                    }
              }
             //  else {

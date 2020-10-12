@@ -128,7 +128,7 @@
                     </li>
       <li class="nav-item avatar">
         <a class="nav-link p-0" href=" <?php   if($_SESSION['roleutilisateur'] == 1) { echo "utilisateur.php"; }else { echo "administrateur.php"; }  ?>">
-          <img name="image" src="   <?php echo     $_SESSION['immageutilisateur'] ?>" alt="immage" class="immageheader"
+          <img style=" width: 60px; height: 60px; border: none; border-radius: 70px;" name="image" src="   <?php echo     $_SESSION['immageutilisateur'] ?>" alt="immage" 
             alt="avatar image" height="35">
         </a>
       </li>
