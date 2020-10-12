@@ -46,7 +46,7 @@
         }
         
 
-        $requette = $basevoirarticleblog->prepare("SELECT count(id_like) as nbr_like FROM likes where id_article= ? "); 
+        $requette = $basevoirarticleblog->prepare("SELECT count(distinct id_utilisateur) as nbr_like FROM likes where id_article= ? "); 
         $requette ->execute(array($_GET['id_article'])) ;
         $re=$requette->fetch();
 
