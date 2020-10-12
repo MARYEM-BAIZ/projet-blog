@@ -108,7 +108,7 @@
               </div>
               <p class="mt-4"> <?php echo $afficher333['date_creation_article'] ?> </p>
               <hr>
-              <p> <?php echo $afficher333['titre_article'] ?></p>
+              <p><strong> <?php echo $afficher333['titre_article'] ?></strong></p>
               <hr>
               <p> <?php echo substr($afficher333['contenu_article'],0,30) ; ?></p>
           

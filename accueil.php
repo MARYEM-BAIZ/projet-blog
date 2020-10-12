@@ -25,7 +25,17 @@ $select2->execute(array());
 
 $select3=$base1blog->prepare('select * from articles where id_categorie=3 order by id_article desc limit 4');
 $select3->execute(array());
+               
+          if (isset($_POST['chercher1'])) {
+                 $mot=strip_tags($_POST['chercher']);
+                 $mot=htmlspecialchars($_POST['chercher']);
 
+
+                 $cherche=$base1blog->prepare('select * from articles where titre_article like ? ');
+                 $cherche->execute(array("%".$_POST['chercher']."%"));
+
+            //  var_dump($che);
+          }
   
 
  ?>
@@ -72,6 +82,15 @@ $select3->execute(array());
                     <li class="nav-item">
                         <a class="nav-link h5" href="contact_us.php">Contact Us</a>
                     </li>
+                    <li class="nav-item">
+                        <form action="#" method="post">
+                          <input style="border-color:gray border-radius:3px "    class="ml-5  p-2 h5 " type="text" name="chercher" placeholder="Chercher">
+                          <button style="border:none" name="chercher1" type="submit" class="text-muted mt-2 ml-3 "  >
+                        <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+                        </button>
+                        </form>
+                    </li>
+                    
                     </ul>
                     
                 </div>
@@ -114,69 +133,103 @@ $select3->execute(array());
             <input class="btn btn-info my-4 btn-block" name="revenir" value="revenir à votre page"  type="submit">
             </form> -->
        
-  
+            <?php      if (!isset($_POST['chercher1'])) {  ?>
+                   
+                   <section class=" mb-2 p-5 ">
+                   <p class="h2 mb-5 text-muted ">* Les derniers articles de la categorie ( bien etre ) :</p>
+                  <div class="container">
+                      <div class="row">
+                      <?php  while ($afficher1=$select1->fetch()) {?>
+                        <div class="col-md-3">
+                          <div class="mb-4   ">
+                              <img class="imgimg" src="<?php echo $afficher1['immage_article'] ?>" alt="immage">
+                          </div>                        
+                           <p><strong><?php echo $afficher1['titre_article'] ?></strong></p>
+                           <hr>
+                           <p><?php echo $afficher1['date_creation_article'] ?></p>
+                           <hr>
+                           <p> <?php echo substr($afficher1['contenu_article'],0,30) ; ?></p>
+                           <a href="voir_article.php?id_article=<?php echo $afficher1['id_article']; ?>">Voir l'article</a>
+                        </div>
+                        <?php }   ?>
+                      </div>
+                  </div>
+                 
+                 </section>
+                 <hr>
+            
+                 <section class=" mb-2 p-5 ">
+                 <p class="h2 mb-5 text-muted ">* Les derniers articles de la categorie ( cheuveux ) :</p>
+                 <div class="container">
+                      <div class="row ">
+                      <?php  while ($afficher2=$select2->fetch()) {?>
+                        <div class="col-md-3">
+                          <div class="mb-4 ">
+                              <img class="imgimg" src="<?php echo $afficher2['immage_article'] ?>" alt="immage">
+                          </div>                        
+                           <p><strong><?php echo $afficher2['titre_article'] ?></strong></p>
+                           <hr>
+                           <p><?php echo $afficher2['date_creation_article'] ?></p>
+                           <hr>
+                           <p> <?php echo substr($afficher2['contenu_article'],0,30) ; ?></p>
+                           <a href="voir_article.php?id_article=<?php echo $afficher2['id_article']; ?>">Voir l'article</a>
+                        </div>
+                        <?php }   ?>
+                      </div>
+                  </div>
+            
+                 </section>
+                 <hr>
+            
+                
+                 <section class="  mb-5 p-5 text-muted ">
+                 <p class="h2 mb-5">* Les derniers articles de la categorie ( maquillage ) :</p>
+                 <div class="container">
+                      <div class="row ">
+                      <?php  while ($afficher3=$select3->fetch()) {?>
+                        <div class="col-md-3">
+                          <div class="mb-4 ">
+                              <img class="imgimg" src="<?php echo $afficher3['immage_article'] ?>" alt="immage">
+                          </div>                        
+                           <p><strong><?php echo $afficher3['titre_article'] ?></strong></p>
+                           <hr>
+                           <p><?php echo $afficher3['date_creation_article'] ?></p>
+                           <hr>
+                           <p> <?php echo substr($afficher3['contenu_article'],0,30) ; ?></p>
+                           <a href="voir_article.php?id_article=<?php echo $afficher3['id_article']; ?>">Voir l'article</a>
+                        </div>
+                        <?php }   ?>
+                      </div>
+                  </div>
+            
+                 </section>
+
+                 <?php     } else {  ?>
+                    
+                  <section class=" mb-5 p-5 ">
+                   <p class="h2 mb-5 text-muted ">* Les  articles :</p>
+                  <div class="container">
+                      <div class="row">
+                      <?php  while ($chercher1=$cherche->fetch()) {?>
+                        <div class="col-md-3">
+                          <div class="mb-4   ">
+                              <img class="imgimg" src="<?php echo $chercher1['immage_article'] ?>" alt="immage">
+                          </div>                        
+                           <p><strong><?php echo $chercher1['titre_article'] ?></strong></p>
+                           <hr>
+                           <p><?php echo $chercher1['date_creation_article'] ?></p>
+                           <a href="voir_article.php?id_article=<?php echo $chercher1['id_article']; ?>">Voir l'article</a>
+                        </div>
+                      <?php }   ?>
+                      </div>
+                  </div>
+                 
+                 </section>
+
+                   <?php    }   ?>
     
-     <section class=" mb-2 p-5 ">
-       <p class="h2 mb-5 text-muted ">* Les derniers articles de la categorie ( bien etre ) :</p>
-      <div class="container">
-          <div class="row">
-          <?php  while ($afficher1=$select1->fetch()) {?>
-            <div class="col-md-3">
-              <div class="mb-4   ">
-                  <img class="imgimg" src="<?php echo $afficher1['immage_article'] ?>" alt="immage">
-              </div>                        
-               <p><?php echo $afficher1['titre_article'] ?></p>
-               <hr>
-               <p><?php echo $afficher1['date_creation_article'] ?></p>
-               <a href="voir_article.php?id_article=<?php echo $afficher1['id_article']; ?>">Voir l'article</a>
-            </div>
-            <?php }   ?>
-          </div>
-      </div>
-     
-     </section>
-     <hr>
-
-     <section class=" mb-2 p-5 ">
-     <p class="h2 mb-5 text-muted ">* Les derniers articles de la categorie ( cheuveux ) :</p>
-     <div class="container">
-          <div class="row ">
-          <?php  while ($afficher2=$select2->fetch()) {?>
-            <div class="col-md-3">
-              <div class="mb-4 ">
-                  <img class="imgimg" src="<?php echo $afficher2['immage_article'] ?>" alt="immage">
-              </div>                        
-               <p><?php echo $afficher2['titre_article'] ?></p>
-               <hr>
-               <p><?php echo $afficher2['date_creation_article'] ?></p>
-               <a href="voir_article.php?id_article=<?php echo $afficher2['id_article']; ?>">Voir l'article</a>
-            </div>
-            <?php }   ?>
-          </div>
-      </div>
-
-     </section>
-     <hr>
-
-     <section class="  mb-5 p-5 text-muted ">
-     <p class="h2 mb-5">* Les derniers articles de la categorie ( maquillage ) :</p>
-     <div class="container">
-          <div class="row ">
-          <?php  while ($afficher3=$select3->fetch()) {?>
-            <div class="col-md-3">
-              <div class="mb-4 ">
-                  <img class="imgimg" src="<?php echo $afficher3['immage_article'] ?>" alt="immage">
-              </div>                        
-               <p><?php echo $afficher3['titre_article'] ?></p>
-               <hr>
-               <p><?php echo $afficher3['date_creation_article'] ?></p>
-               <a href="voir_article.php?id_article=<?php echo $afficher3['id_article']; ?>">Voir l'article</a>
-            </div>
-            <?php }   ?>
-          </div>
-      </div>
-
-     </section>
+          
+          
      
 </main>
 <footer>
