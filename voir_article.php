@@ -10,20 +10,6 @@
 // $_SESSION['id_article']
 
 
-    //  if (isset($_POST['quitter'])) {
-    //     header('Location:accueil.php');
-    //  }
-           
-
-     
-        // if (isset($_POST['revenir']) and  $_SESSION['roleutilisateur']==1) {
-        //     header('Location:utilisateur.php');
-        //  }
-        //  if (isset($_POST['revenir']) and $_SESSION['roleutilisateur']==2) {
-        //     header('Location:administrateur.php');
-        //  }
-     
-
     if(isset($_GET['id_article']) and isset($_SESSION['idutilisateur']) and isset($_POST['envoyer']) ) {
        
         $inserercomment=$basevoirarticleblog->prepare("insert into commentaire(contenu_commentaire , id_article , id_utilisateur) values(?,?,?) ");
@@ -52,8 +38,8 @@
     
         if (isset($_POST['liker']) and isset($_SESSION['idutilisateur']) and isset($_GET['id_article']) ) {
           
-          $liker=$basevoirarticleblog->prepare(' insert into likes(id_article) values(?)');
-          $liker1=$liker->execute(array($_GET['id_article']));
+          $liker=$basevoirarticleblog->prepare(' insert into likes(id_article,id_utilisateur) values(?,?)');
+          $liker1=$liker->execute(array($_GET['id_article'],$_SESSION['idutilisateur']));
         
          
           // var_dump($liker1);
@@ -170,7 +156,7 @@
               <button name="liker" type="button" style="border:none ; background-color:white"><i class="fa fa-thumbs-up fa-3x " aria-hidden="true"></i> </button>
               </div> -->
               <br><br>
-              <p >Date de publication : <?php echo $afficher333['date_creation_article'] ?>   </p>
+              <p ><strong>Date de publication :</strong> <?php echo $afficher333['date_creation_article'] ?>   </p>
               <hr>
               <p ><strong>titre :</strong> <?php echo $afficher333['titre_article'] ?></p>
               <hr>
