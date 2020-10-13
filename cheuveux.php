@@ -9,7 +9,7 @@
     }   
 
       //  echo "je doit changer date_parution_articles "
-         $afficher3=$basecheuveuxblog->prepare('select * from articles where   id_categorie=2  ');
+         $afficher3=$basecheuveuxblog->prepare('select * from articles where   id_categorie=2 order by date_creation_article desc limit 8 ');
          $afficher33=$afficher3->execute();
           // var_dump($afficher33);
           // echo " <br>";

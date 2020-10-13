@@ -9,10 +9,18 @@
     }   
 
       //  echo "je doit changer date_parution_articles "
-         $afficher3=$basebienetreblog->prepare('select * from articles where   id_categorie=1  ');
+         $afficher3=$basebienetreblog->prepare('select *, max(id_article) as dernier_article  from articles where   id_categorie=1 order by date_creation_article desc limit 8 ');
          $afficher33=$afficher3->execute();
-        //   var_dump($afficher33);
-        //   echo " <br>";
+        $ligne1 = $afficher3->fetch() ; 
+        $max = $ligne1['dernier_article']; 
+        
+        $select=$basebienetreblog->prepare(' select * from articles where id_article between ? and ?');
+        $select1=$select->execute(array($max+1,$max+8));
+        // var_dump($select1);
+        // while ($select11=$select->fetch())
+        // {
+        //       var_dump($select11);
+        // }
 
         if (isset($_POST['chercher1'])  ) {
             $mot=strip_tags($_POST['chercher']);
@@ -137,10 +145,13 @@
         <?php   } ?>
      </div>
      </div>
-    
+     <form class="text-center mt-5 " action="#" method="post">
+     <button style="color:gray " class="btn btn-info font-weight-bold  " name="voirplus" type="submit">voir plus</button>
+     </form>
+
     </section>
 
-    <?php     } else {  ?>
+    <?php     } elseif(isset($_POST['chercher1'])) {  ?>
      
     <section class=" mb-5 p-5 ">
                    <p class="h2 mb-5 text-muted ">* Les  articles (résultat du recherche) :</p>
@@ -162,7 +173,29 @@
                  
                  </section>
 
-                 <?php    }   ?>
+                 <?php    } else { ?>
+
+                  <section class=" mb-5 p-5 ">
+                   <!-- <p class="h2 mb-5 text-muted ">* Les  articles (résultat du recherche) :</p> -->
+                  <div class="container">
+                      <div class="row">
+                      <?php  while($select11=$select->fetch()) {?>
+                        <div class="col-md-3">
+                          <div class="mb-4">
+                              <img  style=" display: block; margin-left: auto;  margin-right: auto; width: 150px; height: 150px; border: none; border-radius: 70px;" src="<?php echo $select11['immage_article'] ?>" alt="immage">
+                          </div>                        
+                           <p><strong><?php echo $select11['titre_article'] ?></strong></p>
+                           <hr>
+                           <p><?php echo $select11['date_creation_article'] ?></p>
+                           <a href="voir_article.php?id_article=<?php echo $select11['id_article']; ?>">Voir l'article</a>
+                        </div>
+                      <?php }   ?>
+                      </div>
+                  </div>
+                 
+                 </section>
+
+                 <?php }   ?>
 
 </main>
 <footer>
