@@ -65,6 +65,7 @@ try {
           <a class="dropdown-item h5" href="message_contact_us.php">Messages (Contact Us)</a>
           <a class="dropdown-item h5" href="mes_articles_admin.php">Liste des articles</a>
           <a class="dropdown-item h5" href="ajout_article.php">Ajouter un article</a>
+          <a class="dropdown-item h5" href="signal.php">signal</a>
           <!-- <a class="dropdown-item" href="deconnexion.php">Déconnexion</a> -->
         </div>
       </li>

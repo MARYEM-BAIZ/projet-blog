@@ -20,13 +20,31 @@
 
      $done=$basevoirarticleblog->prepare(' select * from articles where id_article =?');
      $done1=$done->execute(array($_GET['id_article']));
+    
+      
+    if (isset($_POST['signaler'])  and isset($_GET['id_article']) ) {
 
+         $avoir=$basevoirarticleblog->prepare('  select utilisateur.email_utilisateur from utilisateur,articles where utilisateur.id_utilisateur = articles.id_utilisateur and articles.id_article=?');
+     $avoir1=$avoir->execute(array($_GET['id_article']));
+      $av=$avoir->fetch();
+      // var_dump($av);
+
+       $signaler=$basevoirarticleblog->prepare(' insert into signaler(id_article_signale,email_createur_du_article_signale) values(?,?)');
+       $signaler1=$signaler->execute(array($_GET['id_article'],$av['email_utilisateur']));
+      
+    }
+
+     
+   
+      
     $affichercomment=$basevoirarticleblog->prepare(' select * from commentaire where id_article =?');
     $assurer1=$affichercomment->execute(array($_GET['id_article']));
   
     echo " <br>";
 
     $afficher2=$affichercomment->fetch();
+
+
 
 
     // $requette2 = $basevoirarticleblog->prepare(" select utilisateur.username_utilisateur, commentaire.contenu_commentaire ,commentaire.date_commentaire from utilisateur , commentaire, articles where  articles.id_article = commentaire.id_article and commentaire.id_utilisateur = utilisateur.id_utilisateur");
@@ -144,6 +162,20 @@
       
 
 <?php  while ($afficher333=$done->fetch()) { ?>
+
+
+                            <div style="display:block" class="btn-group ">
+                           <button class="btn  btn-sm dropdown-toggle mb-3 " type="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                             Plus
+                           </button>
+                           <div class="dropdown-menu">
+                          <form class="dropdown-item" action="#" method="post">
+                                <input style="border:none;background-color:white" type="submit" name="signaler" value="signaler">
+                          </form>
+                                </div>
+
+
               <div class="mb-4">
                   <img style="width: 100% ; height:250px ;border: none ; display:block ; margin-left:auto ;margin-right:auto  "  src="<?php echo $afficher333['immage_article'] ?>" alt="immage">
               </div>
