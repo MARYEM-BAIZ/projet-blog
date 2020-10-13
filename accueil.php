@@ -14,16 +14,16 @@ try {
     echo " la connexion a échoué " ." <br>";
 }           
          
-$select1=$base1blog->prepare('select * from articles where id_categorie=1 order by id_article desc limit 4');
+$select1=$base1blog->prepare('select * from articles where id_categorie=1 order by date_creation_article desc limit 4');
 $select1->execute(array());
 //  var_dump();
 //  echo "  <br> ";
 
-$select2=$base1blog->prepare('select * from articles where id_categorie=2 order by id_article desc limit 4');
+$select2=$base1blog->prepare('select * from articles where id_categorie=2 order by date_creation_article desc limit 4');
 $select2->execute(array());
 
 
-$select3=$base1blog->prepare('select * from articles where id_categorie=3 order by id_article desc limit 4');
+$select3=$base1blog->prepare('select * from articles where id_categorie=3 order by date_creation_article desc limit 4');
 $select3->execute(array());
                
           if (isset($_POST['chercher1']) ) {
