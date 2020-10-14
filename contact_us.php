@@ -71,6 +71,9 @@ try {
                     <li class="nav-item">
                         <a class="nav-link h5" href="contact_us.php">Contact Us</a>
                     </li>
+                    <li class="nav-item ml-5">
+                        <a class="nav-link h5" href="discussion.php">Discussion</a>
+                    </li>
                     </ul>
                     
                 </div>

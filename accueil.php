@@ -91,6 +91,9 @@ $select3->execute(array());
                         </form>
                     </li>
                     
+                    <li class="nav-item ml-5">
+                        <a class="nav-link h5" href="discussion.php">Discussion</a>
+                    </li>
                     </ul>
                     
                 </div>
