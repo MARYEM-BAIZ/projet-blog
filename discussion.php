@@ -8,6 +8,16 @@
                 } catch (exception $e) {
                    echo " la connexion a échoué " ." <br>";
                 }  
+         
+                if (isset($_POST['publier'])) {
+                    
+                  $question=strip_tags($_POST['question']);
+                  $question=htmlspecialchars($_POST['question']);
+
+                     $questionner=$base1blog->prepare('insert into question(id_utilisateur,contenu_question) values(?,?)');
+                     $test=$questionner->execute(array($_SESSION['idutilisateur'],$_POST['question']));
+                       var_dump($test); 
+                }
 
 
 
@@ -121,15 +131,15 @@
     </form>
     </div>
     <div class="col-2">
-    <div style="" class="btn-group ">
+    <!-- <div style="" class="btn-group ">
                            <button class="btn  btn-sm dropdown-toggle mb-3 " type="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                              Plus
                            </button>
-                           <div class="dropdown-menu">
-                          <form class="dropdown-item" action="#" enctype="multipart/form-data" method="post">
+                           <div class="dropdown-menu"> -->
+                          <!-- <form class="dropdown-item" action="#" enctype="multipart/form-data" method="post"> -->
                                 <!-- <input style="border:none;background-color:white" type="file" name="uploder" value="uploader une immage"> -->
-                                <div class="input-group">
+                                <!-- <div class="input-group">
   
   <div class="mb-4  custom-file">
     <input type="file" name="file" class=" custom-file-input" value="uploder un image" id="inputGroupFile01"
@@ -137,11 +147,16 @@
     <label class="custom-file-label" for="inputGroupFile01">uploader/immage</label>
   </div>
 </div>
-                          </form>
-                                </div>
-    </div>
+                          </form> -->
+                                <!-- </div>
+    </div> -->
   </div>
   </div>
+  <form class="text-center" enctype="multipart/form-data" action="#" method="post">
+  <!-- class="btn btn-info font-weight-bold  btn-block" -->
+    <!-- <button  type="button"  name="publier" class=" btn btn-info btn-lg  text-muted mt-3" >Publier</button> -->
+    <input type="submit"  name="publier" class="form-control text-muted mb-4" placeholder="publier">
+    </form>
     </section>
     <?php  }  ?>
       </main>

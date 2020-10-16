@@ -32,6 +32,9 @@
 
        //  var_dump($che);
      }
+     $afficher5=$basebienetreblog->prepare('select * from articles where   id_categorie=1 order by date_creation_article desc limit 8 ');
+     $afficher5->execute();
+  
          ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -122,13 +125,41 @@
     </header>
 <main class="bg-white">
 
-<?php      if (!isset($_POST['chercher1'])) {  ?>
+<?php      if (!isset($_POST['chercher1'])) { 
+
+         if (isset($_POST['voirplus'])) { 
+  ?>
+
+
+<section class=" mb-5 p-5 ">
+                   <!-- <p class="h2 mb-5 text-muted ">* Les  articles (résultat du recherche) :</p> -->
+                  <div class="container">
+                      <div class="row">
+                      <?php  while($select11=$select->fetch()) {?>
+                        <div class="col-md-3">
+                          <div class="mb-4">
+                              <img  style=" display: block; margin-left: auto;  margin-right: auto; width: 150px; height: 150px; border: none; border-radius: 70px;" src="<?php echo $select11['immage_article'] ?>" alt="immage">
+                          </div>                        
+                           <p><strong><?php echo $select11['titre_article'] ?></strong></p>
+                           <hr>
+                           <p><?php echo $select11['date_creation_article'] ?></p>
+                           <a href="voir_article.php?id_article=<?php echo $select11['id_article']; ?>">Voir l'article</a>
+                        </div>
+                      <?php }   ?>
+                      </div>
+                  </div>
+                 
+                 </section>
+
+                 <?php } ?>
+
+
     <section class="  mb-5 p-5">
     <p  class="h1 mb-5 text-muted">Bien Etre</p>
     
      <div class="container">
      <div class="row">
-     <?php  while ($afficher333=$afficher3->fetch()) { ?>
+     <?php  while ($afficher333=$afficher5->fetch()) { ?>
          <div class="col-md-3 col-lg-3 col-sm-12">
               <div  class="immageaffiche" >
                   <img class="imgheight" src="<?php echo $afficher333['immage_article'] ?>" alt="immage">
@@ -150,6 +181,7 @@
      </form>
 
     </section>
+
 
     <?php     } elseif(isset($_POST['chercher1'])) {  ?>
      
@@ -175,25 +207,7 @@
 
                  <?php    } else { ?>
 
-                  <section class=" mb-5 p-5 ">
-                   <!-- <p class="h2 mb-5 text-muted ">* Les  articles (résultat du recherche) :</p> -->
-                  <div class="container">
-                      <div class="row">
-                      <?php  while($select11=$select->fetch()) {?>
-                        <div class="col-md-3">
-                          <div class="mb-4">
-                              <img  style=" display: block; margin-left: auto;  margin-right: auto; width: 150px; height: 150px; border: none; border-radius: 70px;" src="<?php echo $select11['immage_article'] ?>" alt="immage">
-                          </div>                        
-                           <p><strong><?php echo $select11['titre_article'] ?></strong></p>
-                           <hr>
-                           <p><?php echo $select11['date_creation_article'] ?></p>
-                           <a href="voir_article.php?id_article=<?php echo $select11['id_article']; ?>">Voir l'article</a>
-                        </div>
-                      <?php }   ?>
-                      </div>
-                  </div>
-                 
-                 </section>
+                
 
                  <?php }   ?>
 
