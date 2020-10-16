@@ -126,8 +126,9 @@
             alt="avatar image" height="35">
    </div>
     <div class="col-8 ">
-    <form class="text-center" enctype="multipart/form-data" action="#" method="post">
+    <form class="text-center" enctype="multipart/form-data" action="#" method="POST">
     <input type="text"  name="question" class="form-control mb-4" placeholder="écrire votre question">
+    <input type="submit"  name="publier" class="form-control text-muted mb-4" placeholder="publier">
     </form>
     </div>
     <div class="col-2">
@@ -152,11 +153,7 @@
     </div> -->
   </div>
   </div>
-  <form class="text-center" enctype="multipart/form-data" action="#" method="post">
-  <!-- class="btn btn-info font-weight-bold  btn-block" -->
-    <!-- <button  type="button"  name="publier" class=" btn btn-info btn-lg  text-muted mt-3" >Publier</button> -->
-    <input type="submit"  name="publier" class="form-control text-muted mb-4" placeholder="publier">
-    </form>
+
     </section>
     <?php  }  ?>
       </main>
