@@ -15,11 +15,27 @@
                   $question=htmlspecialchars($_POST['question']);
 
                      $questionner=$base1blog->prepare('insert into question(id_utilisateur,contenu_question) values(?,?)');
-                     $test=$questionner->execute(array($_SESSION['idutilisateur'],$_POST['question']));
+                     $test=$questionner->execute(array($_SESSION['idutilisateur'],$_POST['question'],));
                        var_dump($test); 
                 }
 
+                if (isset($_POST['publier1'])) {
+                    
+                  $reponse=strip_tags($_POST['reponse']);
+                  $reponse=htmlspecialchars($_POST['reponse']);
 
+                     $repondre=$base1blog->prepare('insert into reponse(id_utilisateur_repondu,contenu_reponse,id_question) values(?,?,?)');
+                     $test1=$repondre->execute(array($_SESSION['idutilisateur'],$_POST['reponse'],$_GET['id_question']));
+                       var_dump($test1); 
+                }
+
+
+         $select=$base1blog->prepare(' select * from question');
+         $select->execute(array());
+
+         $select1=$base1blog->prepare(' select * from reponse  where id_question=? ');
+         $mm=$select1->execute(array($_GET['id_question']));
+         var_dump($mm);
 
   ?>
 
@@ -117,8 +133,9 @@
 
 
       <main class="bg-white">
-      <?php    if (isset($_SESSION['idutilisateur'])) {  ?>
-    <section class="p-5">
+     <section>
+     <?php    if (isset($_SESSION['idutilisateur'])) {  ?>
+    <article class="p-5">
   <div class="container">
   <div class="row">
   <div class="col-2 ">
@@ -154,8 +171,53 @@
   </div>
   </div>
 
-    </section>
+    </article>
     <?php  }  ?>
+    <article>
+    
+    </article>
+     </section>
+     <section>
+     <?php  while ($afficher=$select->fetch()) { ?>
+      <article class="pl-5 pr-5 pt-1 pb-1">
+ 
+   <!-- <img name="image" src="" alt="immage" class="immageheader"
+            alt="avatar image" height="35"> -->
+            <p><?php  echo $afficher['id_utilisateur'] ?></p>
+  
+  
+   <p><strong><?php  echo $afficher['date_question'] ?></strong></p>
+   
+   <p>    <?php  echo $afficher['contenu_question'] ?></p>
+ <hr>
+ 
+    
+      <p>réponses</p>
+      <?php  while ($afficher1=$select1->fetch()) { ?>
+        <p><?php  echo $afficher1['id_utilisateur_repondu'] ?></p>
+  
+  
+  <p><strong><?php  echo $afficher1['date_reponse'] ?></strong></p>
+  
+  <p>    <?php  echo $afficher1['contenu_reponse'] ?></p>
+        <?php   } ?>
+    </article>
+    
+    <?php    if (isset($_SESSION['idutilisateur'])) {  ?>
+    
+      <article class="pl-5 pr-5 pt-1 pb-1">
+      <hr>
+ <form class="text-center" enctype="multipart/form-data" action="discussion.php?id_question=<?php  echo $afficher['id_question'] ?>" method="POST">
+    <input type="text"  name="reponse" class="form-control mb-4" placeholder="écrire votre reponse">
+    <!-- <input type="submit"  name="publier1" class="form-control text-muted mb-4" placeholder="publier"> -->
+    <button  name="publier1" class="form-control text-muted mb-4" >publier</button>
+    </form>
+    </article>
+    <?php  }  ?>
+    <hr>
+      <?php   } ?>
+      
+     </section>
       </main>
 
       <footer>
