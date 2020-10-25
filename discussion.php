@@ -19,23 +19,23 @@
                        var_dump($test); 
                 }
 
+                
                 if (isset($_POST['publier1'])) {
                     
                   $reponse=strip_tags($_POST['reponse']);
                   $reponse=htmlspecialchars($_POST['reponse']);
-
+                
                      $repondre=$base1blog->prepare('insert into reponse(id_utilisateur_repondu,contenu_reponse,id_question) values(?,?,?)');
-                     $test1=$repondre->execute(array($_SESSION['idutilisateur'],$_POST['reponse'],$_GET['id_question']));
-                       var_dump($test1); 
+                     $test1=$repondre->execute(array($_SESSION['idutilisateur'],$_POST['reponse'],$afficher['id_question']));
+                      //  var_dump($test1); 
                 }
-
-
+       
          $select=$base1blog->prepare(' select * from question');
          $select->execute(array());
 
-         $select1=$base1blog->prepare(' select * from reponse  where id_question=? ');
-         $mm=$select1->execute(array($_GET['id_question']));
-         var_dump($mm);
+        //  $select1=$base1blog->prepare(' select * from reponse  where id_question=? ');
+        //  $mm=$select1->execute(array($_GET['id_question']));
+        //  var_dump($mm);
 
   ?>
 
@@ -178,7 +178,16 @@
     </article>
      </section>
      <section>
-     <?php  while ($afficher=$select->fetch()) { ?>
+     <?php  while ($afficher=$select->fetch()) { 
+
+
+       $select1=$base1blog->prepare(' select * from reponse  where id_question=? ');
+        $mm=$select1->execute(array($afficher['id_question']));
+        // var_dump($mm);
+
+      
+
+       ?>
       <article class="pl-5 pr-5 pt-1 pb-1">
  
    <!-- <img name="image" src="" alt="immage" class="immageheader"
@@ -190,30 +199,31 @@
    
    <p>    <?php  echo $afficher['contenu_question'] ?></p>
  <hr>
- 
+ <?php    if (isset($_SESSION['idutilisateur'])) {  ?>
     
-      <p>réponses</p>
-      <?php  while ($afficher1=$select1->fetch()) { ?>
-        <p><?php  echo $afficher1['id_utilisateur_repondu'] ?></p>
-  
-  
-  <p><strong><?php  echo $afficher1['date_reponse'] ?></strong></p>
-  
-  <p>    <?php  echo $afficher1['contenu_reponse'] ?></p>
-        <?php   } ?>
+    <article class="pl-5 pr-5 pt-1 pb-1">
+    <hr>
+<form class="text-center" enctype="multipart/form-data" action="#" method="POST">
+  <input type="text"  name="reponse" class="form-control mb-4" placeholder="écrire votre reponse">
+  <!-- <input type="submit"  name="publier1" class="form-control text-muted mb-4" placeholder="publier"> -->
+  <button  name="publier1" class="form-control text-muted mb-4" >publier</button>
+  </form>
+  </article>
+  <?php  }  ?>
+    
+  <p>réponses</p>
+      <?php   while ($afficher1=$select1->fetch()) { ?>
+     <p><?php  echo $afficher1['id_utilisateur_repondu'] ?></p>
+
+
+<p><strong><?php  echo $afficher1['date_reponse'] ?></strong></p>
+
+<p>    <?php  echo $afficher1['contenu_reponse'] ?></p>
+     <?php   } ?>
+
     </article>
     
-    <?php    if (isset($_SESSION['idutilisateur'])) {  ?>
-    
-      <article class="pl-5 pr-5 pt-1 pb-1">
-      <hr>
- <form class="text-center" enctype="multipart/form-data" action="discussion.php?id_question=<?php  echo $afficher['id_question'] ?>" method="POST">
-    <input type="text"  name="reponse" class="form-control mb-4" placeholder="écrire votre reponse">
-    <!-- <input type="submit"  name="publier1" class="form-control text-muted mb-4" placeholder="publier"> -->
-    <button  name="publier1" class="form-control text-muted mb-4" >publier</button>
-    </form>
-    </article>
-    <?php  }  ?>
+   
     <hr>
       <?php   } ?>
       

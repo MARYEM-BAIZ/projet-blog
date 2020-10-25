@@ -8,9 +8,53 @@
         echo " la connexion a échoué " ." <br>";
     }   
 
+
+    $requette = $basecheuveuxblog->prepare("SELECT count(id_article) as nbr_article FROM articles where  id_categorie=? "); 
+      $req = $requette ->execute(array(2)) ;
+        $re=$requette->fetch();
+        var_dump($req);
+        echo "<br>";
+
+
+        $articlepartage=8;
+        $articletotale=$re['nbr_article'];
+        echo $articletotale;
+        echo "<br>";
+        $nombrepages=ceil($articletotale/$articlepartage);
+        // @$page=$_GET['page'];
+        echo $nombrepages;
+        echo "<br>";
+
+         if (isset($_GET['page']) and !empty($_GET['page']) and $_GET['page']>0 and $_GET['page']<= $nombrepages ) {
+               $_GET['page']= intval($_GET['page']);
+               $page=$_GET['page'];
+         }
+         else {
+           $page=1;
+         }
+
+        $debut=($page-1)*$articlepartage;
+        echo $debut;
+        echo "<br>";
+
+        // activation des erreurs PDO
+        $basecheuveuxblog->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+      
+    
+
+       
+
+          // $select=$base->prepare('select * from articles order by id_article asc limit ?,?');
+          // $se=$select->execute(array($debut,$articlepartage));
+          $select=$basecheuveuxblog->prepare('select * from articles where  id_categorie=? and id_article between ? and ? order by date_creation_article desc');
+          $se=$select->execute(array(2,$debut,($debut+$articlepartage)));
+          var_dump($se);
+          echo "<br>";
+
+
       //  echo "je doit changer date_parution_articles "
-         $afficher3=$basecheuveuxblog->prepare('select * from articles where   id_categorie=2 order by date_creation_article desc limit 8 ');
-         $afficher33=$afficher3->execute();
+        //  $afficher3=$basecheuveuxblog->prepare('select * from articles where   id_categorie=2 order by date_creation_article desc ');
+        //  $afficher33=$afficher3->execute();
           // var_dump($afficher33);
           // echo " <br>";
 
@@ -122,7 +166,7 @@
 
      <div class="container">
      <div class="row">
-     <?php  while ($afficher333=$afficher3->fetch()) { ?>
+     <?php  while ($afficher333=$select->fetch()) { ?>
          <div class="col-md-3 col-lg-3 col-sm-12">
               <div  class="immageaffiche" >
                   <img class="imgheight" src="<?php echo $afficher333['immage_article'] ?>" alt="immage">
@@ -138,7 +182,15 @@
         <?php   } ?>
      </div>
      </div>
+     
+        <article>
+        <?php for ($i=1; $i <=$nombrepages ; $i++) {  
+                 
+          echo "<a href='?page=$i'>$i</a>";
 
+               }  ?>
+        </article>
+      
     </section>
 
 
@@ -165,6 +217,8 @@
                  </section>
 
                  <?php    }   ?>
+
+         
     
 </main>
 

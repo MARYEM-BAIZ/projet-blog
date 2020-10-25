@@ -9,7 +9,7 @@
     }   
 
       //  echo "je doit changer date_parution_articles "
-         $afficher3=$basemaquillageblog->prepare('select * from articles where   id_categorie=3 order by date_creation_article desc limit 8 ');
+         $afficher3=$basemaquillageblog->prepare('select * from articles where   id_categorie=3 order by date_creation_article desc ');
          $afficher33=$afficher3->execute();
           // var_dump($afficher33);
           // echo " <br>";

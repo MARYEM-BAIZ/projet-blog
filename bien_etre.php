@@ -14,8 +14,8 @@
         $ligne1 = $afficher3->fetch() ; 
         $max = $ligne1['dernier_article']; 
         
-        $select=$basebienetreblog->prepare(' select * from articles where id_article between ? and ?');
-        $select1=$select->execute(array($max+1,$max+8));
+        // $select=$basebienetreblog->prepare(' select * from articles where id_article between ? and ?');
+        // $select1=$select->execute(array($max+1,$max+8));
         // var_dump($select1);
         // while ($select11=$select->fetch())
         // {
@@ -32,7 +32,7 @@
 
        //  var_dump($che);
      }
-     $afficher5=$basebienetreblog->prepare('select * from articles where   id_categorie=1 order by date_creation_article desc limit 8 ');
+     $afficher5=$basebienetreblog->prepare('select * from articles where   id_categorie=1 order by date_creation_article desc  ');
      $afficher5->execute();
   
          ?>
