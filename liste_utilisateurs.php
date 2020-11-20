@@ -83,7 +83,7 @@ if (isset($_GET['id'])) {
         <!-- <p> je dois metre ici l'immage du admin</p> -->
            <!-- <p> je dois metre ici l'immage du admin</p> -->
               <!-- <p> je dois metre ici l'immage du admin</p> -->
-          <img style=" width: 60px; height: 60px; border: none; border-radius: 70px;" src="   <?php echo  $_SESSION['immageutilisateur'] ?>" alt="immage" 
+          <img style=" width: 60px; height: 60px; border: none; border-radius:50%;" src="   <?php echo  $_SESSION['immageutilisateur'] ?>" alt="immage" 
             alt="avatar image" height="35">
         </a>
       </li>

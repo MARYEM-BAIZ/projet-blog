@@ -33,6 +33,7 @@ session_start();
           // print_r($details);
           // echo "  </pre> ";
           // echo "  <br> ";
+
                   $extension=$details['extension'];
                   $liste_extensions_acceptable=array('png','jpg');
                   $resultat=in_array($extension,$liste_extensions_acceptable);

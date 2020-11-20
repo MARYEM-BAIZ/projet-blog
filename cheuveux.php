@@ -9,6 +9,12 @@
     }   
 
 
+  //   $affi=$basecheuveuxblog->prepare('select *, max(id_article) as dernier_article  from articles where   id_categorie=2 order by date_creation_article desc limit 8 ');
+  //   $afficher33=$affi->execute();
+  //  $ligne1 = $affi->fetch() ; 
+  //  $max = $ligne1['dernier_article']; 
+
+
     $requette = $basecheuveuxblog->prepare("SELECT count(id_article) as nbr_article FROM articles where  id_categorie=? "); 
       $req = $requette ->execute(array(2)) ;
         $re=$requette->fetch();
@@ -46,9 +52,19 @@
 
           // $select=$base->prepare('select * from articles order by id_article asc limit ?,?');
           // $se=$select->execute(array($debut,$articlepartage));
-          $select=$basecheuveuxblog->prepare('select * from articles where  id_categorie=? and id_article between ? and ? order by date_creation_article desc');
-          $se=$select->execute(array(2,$debut,($debut+$articlepartage)));
-          var_dump($se);
+          $select=$basecheuveuxblog->prepare('select * from articles where  id_categorie=? order by id_article desc limit 8 ');
+          $se=$select->execute(array(2));
+
+          // $ligne1 = $select->fetch() ; 
+          // $max = $ligne1['dernier_article']; 
+          // while ($afficher333=$select->fetch()) {
+          //   // echo " <pre> " ; 
+          //   //  var_dump($afficher333);  
+          //   //  echo " </pre> ";
+          // }   
+          // echo $max;   
+          // echo "<br>";       
+          var_dump($se);                        
           echo "<br>";
 
 
