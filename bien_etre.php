@@ -13,10 +13,12 @@
          $afficher33=$afficher3->execute();
         $ligne1 = $afficher3->fetch() ; 
         $max = $ligne1['dernier_article']; 
+        echo $max;
+        echo "<br>";
         
-        // $select=$basebienetreblog->prepare(' select * from articles where id_article between ? and ?');
-        // $select1=$select->execute(array($max+1,$max+8));
-        // var_dump($select1);
+        $select=$basebienetreblog->prepare(' select * from articles where id_article between ? and ?');
+        $select1=$select->execute(array($max+1,$max+8));
+        var_dump($select1);
         // while ($select11=$select->fetch())
         // {
         //       var_dump($select11);
